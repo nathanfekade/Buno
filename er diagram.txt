@@ -1,0 +1,87 @@
+SELLER 
+  SellerId identity(meaning we generate it)
+  SellerFirstName
+  SellerLastName
+  SellerUserName
+  SellerEmail
+  SellerPhoneNo
+  SellerCreditCard
+  SellerPassword
+ 
+
+SELLER_LOCATION
+  SellerId
+  SellerCity
+  SellerCountry
+  SellerZipCode
+  SellerAddress
+
+
+SELLER_VERIFICATION 
+  SellerId
+  SellerDocuments
+  SellerDocumentImage
+  SellerDocumentVerificationStatus=False
+  SellerImageVerificationStatus=False
+
+
+BUYER
+  BuyerId identity(meaning we generate it)
+  BuyerFirstName
+  BuyerLastName
+  BuyerUserName
+  BuyerEmail
+  BuyerPhoneNo
+  BuyerCreditCard
+  BuyerPassword
+
+BUYER_LOCATION
+  BuyerId
+  BuyerCity
+  BuyerCountry
+  BuyerZipCode
+  BuyerAddress
+
+PRODUCT
+  ProductId
+  ProductName
+  ProductDate
+  ProductBasePrice
+  ProductFinalPrice (originally same with ProductBasePrice)
+  ProductDescription
+  SellerId
+
+ 
+PRODUCT_REVIEW
+ ProductId
+ BuyerId
+ ProductRating
+ // we will also give out the number of people that commented
+
+
+PRODUCT_COMMENT
+  ProductId
+  BuyerId
+  ProductComment
+ 
+
+PAYMENT_DETAILS
+   BuyerId
+   ProductId 
+   PurchaseDate
+
+
+ACCOUNT_TRANSACTIONS
+  BuyerId
+  TempBuyerAccount
+  SellerId
+  TempAccount
+  TempSellerAccount
+
+  Buyer -> temporary -> SellerAccount
+    10        0           0
+    0        10          0
+    0         0         10
+
+
+
