@@ -1,0 +1,10 @@
+to check
+check there is no null
+check if it is an email
+
+
+
+to add
+face recognition
+session 
+cookie payment integration

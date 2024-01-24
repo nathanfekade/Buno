@@ -5,7 +5,6 @@ SELLER
   SellerUserName
   SellerEmail
   SellerPhoneNo
-  SellerCreditCard
   SellerPassword
  
 
@@ -32,7 +31,6 @@ BUYER
   BuyerUserName
   BuyerEmail
   BuyerPhoneNo
-  BuyerCreditCard
   BuyerPassword
 
 BUYER_LOCATION

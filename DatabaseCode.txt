@@ -1,0 +1,13 @@
+-- first 
+
+CREATE TABLE Seller ( 
+  SellerId int AUTO_INCREMENT, 
+  SellerFirstName varchar(50), 
+  SellerLastName varchar(50),
+   SellerUserName varchar(50), 
+   SellerEmail varchar(50),
+    SellerPhoneNo varchar(50), 
+    SellerPassword varchar(50),
+     PRIMARY KEY(SellerId) )
+
+-- second
