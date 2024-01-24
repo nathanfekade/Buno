@@ -45,6 +45,7 @@ BUYER_LOCATION
 PRODUCT
   ProductId
   ProductName
+  ProductImage
   ProductDate
   ProductBasePrice
   ProductFinalPrice (originally same with ProductBasePrice)
