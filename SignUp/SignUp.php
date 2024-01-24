@@ -96,7 +96,7 @@ if (isset($_POST['submit'])) {
 
 
 
-  $sql = "INSERT INTO seller (SellerFirstName,SellerLastName,SellerUserName,SellerEmail,SellerPhoneNo,SellerPassword) VALUES ('$SellerFirstName','$SellerLastName','$SellerUserName','$SellerEmail','$SellerPhoneNo','$SellerPassword')";
+  $sql = "INSERT INTO Seller (SellerFirstName,SellerLastName,SellerUserName,SellerEmail,SellerPhoneNo,SellerPassword) VALUES ('$SellerFirstName','$SellerLastName','$SellerUserName','$SellerEmail','$SellerPhoneNo','$SellerPassword')";
   $res = $db->query($sql);
   echo $sql;
   if ($res) {
