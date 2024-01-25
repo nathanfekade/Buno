@@ -10,3 +10,88 @@ CREATE TABLE Seller ( SellerId int AUTO_INCREMENT,
  PRIMARY KEY(SellerId) );
 
 -- second
+CREATE TABLE Buyer ( BuyerId int AUTO_INCREMENT,
+ BuyerFirstName varchar(50), 
+ BuyerLastName varchar(50), 
+ BuyerUserName varchar(50) UNIQUE, 
+ BuyerEmail varchar(50) UNIQUE, 
+ BuyerPhoneNo varchar(50), 
+ BuyerPassword varchar(50), 
+ PRIMARY KEY(BuyerId) );
+
+-- third
+CREATE TABLE Product (
+
+  ProductId int AUTO_INCREMENT,
+  ProductName varchar(50),
+  ProductCategory varchar(50),
+  ProductImageFileName varchar(300),
+  ProductDate date,
+  ProductBasePrice float,
+  ProductFinalPrice float,
+  ProductDescription varchar(1000),
+  ProductSold boolean,
+  SellerId int,
+  PRIMARY KEY(ProductId),
+  FOREIGN KEY (SellerId) REFERENCES seller(SellerId)
+)
+
+-- 4
+CREATE TABLE ProductRating(
+    ProductId int,
+    BuyerId int,
+    ProductRating int,
+	FOREIGN KEY (ProductId) REFERENCES product(ProductId),
+    FOREIGN KEY (BuyerId) REFERENCES buyer(BuyerId)
+)
+
+--5
+CREATE TABLE ProductComment(
+    ProductId int,
+    BuyerId int,
+    ProductComment varchar(1000),
+	FOREIGN KEY (ProductId) REFERENCES product(ProductId),
+    FOREIGN KEY (BuyerId) REFERENCES buyer(BuyerId)
+)
+
+--6
+CREATE TABLE PaymentDetails(
+    ProductId int,
+    BuyerId int,
+    PurchaseDate Date,
+	FOREIGN KEY (ProductId) REFERENCES product(ProductId),
+    FOREIGN KEY (BuyerId) REFERENCES buyer(BuyerId)
+)
+
+--7
+CREATE TABLE BuyerLocation(
+  
+  BuyerId int,
+  BuyerCity varchar(100),
+  BuyerCountry varchar(100),
+  BuyerZipCode varchar(100),
+  BuyerAddress varchar(100),
+   FOREIGN KEY (BuyerId) REFERENCES buyer(BuyerId)
+)
+--8
+  
+CREATE TABLE SellerLocation(
+  
+  SellerId int,
+  SellerCity varchar(100),
+  SellerCountry varchar(100),
+  SellerZipCode varchar(100),
+  SellerAddress varchar(100),
+   FOREIGN KEY (SellerID) REFERENCES Seller(SellerId)
+    
+)  
+--9
+CREATE TABLE SellerVerification (
+    
+  SellerId int,
+  SellerDocuments varchar(1000),
+  SellerDocumentImage varchar(1000),
+  SellerDocumentVerificationStatus boolean DEFAULT False,
+  SellerImageVerificationStatus boolean DEFAULT False
+   
+)
