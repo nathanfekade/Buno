@@ -32,7 +32,11 @@ $db=$Con->getConnection();
     <div class=""></div>
     <div class="sign-up">
       <div class="wrapper">
-        <form action="" method="post">
+
+      <form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>">
+
+<!-- 
+        <form action="" method="post"> -->
           <!-- how to add id on the form -->
                 <div>
             <span class="material-symbols-outlined"> person </span
@@ -79,22 +83,23 @@ $db=$Con->getConnection();
       </center>
       
     </form>
-    <?php
- 
-    error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
-
-if (isset($_POST['submit'])) {
   
-  $SellerFirstName = $_POST['SellerFirstName'];
-  $SellerLastName = $_POST['SellerLastName'];
-  $SellerUserName = $_POST['SellerUserName'];
-  $SellerEmail = $_POST['SellerEmail'];
-  $SellerPhoneNo = $_POST['SellerPhoneNo'];
-  $SellerPassword = $_POST['SellerPassword'];
+  
+  <?php
+ 
+//     error_reporting(E_ALL);
+// ini_set('display_errors', 1);
 
+// define variables and set to empty values
+$SellerFirstName = $SellerLastName = $SellerUserName = $SellerEmail = $SellerPhoneNo = $SellerPassword ="";
 
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  $SellerFirstName = test_input($_POST["SellerFirstName"]);
+  $SellerLastName = test_input($_POST["SellerLastName"]);
+  $SellerUserName = test_input($_POST["SellerUserName"]);
+  $SellerEmail = test_input($_POST["SellerEmail"]);
+  $SellerPhoneNo = test_input($_POST["SellerPhoneNo"]);
+  $SellerPassword = test_input($_POST["SellerPassword"]);
 
   $sql = "INSERT INTO Seller (SellerFirstName,SellerLastName,SellerUserName,SellerEmail,SellerPhoneNo,SellerPassword) VALUES ('$SellerFirstName','$SellerLastName','$SellerUserName','$SellerEmail','$SellerPhoneNo','$SellerPassword')";
   $res = $db->query($sql);
@@ -105,6 +110,35 @@ if (isset($_POST['submit'])) {
     echo "<script> alert('Failed to insert data. Error: " . $db->error . "')</script>";
   }
 }
+
+function test_input($data) {
+  $data = trim($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  return $data;
+}
+?>
+<?php
+// if (isset($_POST['submit'])) {
+  
+//   $SellerFirstName = $_POST['SellerFirstName'];
+//   $SellerLastName = $_POST['SellerLastName'];
+//   $SellerUserName = $_POST['SellerUserName'];
+//   $SellerEmail = $_POST['SellerEmail'];
+//   $SellerPhoneNo = $_POST['SellerPhoneNo'];
+//   $SellerPassword = $_POST['SellerPassword'];
+
+
+
+//   $sql = "INSERT INTO Seller (SellerFirstName,SellerLastName,SellerUserName,SellerEmail,SellerPhoneNo,SellerPassword) VALUES ('$SellerFirstName','$SellerLastName','$SellerUserName','$SellerEmail','$SellerPhoneNo','$SellerPassword')";
+//   $res = $db->query($sql);
+//   echo $sql;
+//   if ($res) {
+ //     echo "<script> alert('Data inserted successfully.')</script>"; -->
+//   } else {
+ //     echo "<script> alert('Failed to insert data. Error: " . $db->error . "')</script>"; -->
+//   }
+// }
 ?>
 
     </div>

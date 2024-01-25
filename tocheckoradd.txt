@@ -1,6 +1,16 @@
 to check
-check there is no null
-check if it is an email
+
+check there is no null (https://www.w3schools.com/php/php_form_url_email.asp)
+
+check if it is an email(https://www.w3schools.com/php/php_form_url_email.asp)
+
+when reloading a page it gives an error because it tries to send the data again so check
+
+for checking if it is a buyer or seller image 22 on telegram 
+
+change connect class values to constant
+
+when entering password let the image be .. so that the password won't be visible and if possible add and eye label that makes the password visible when we touch it
 
 
 
