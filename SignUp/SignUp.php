@@ -2,6 +2,8 @@
 
 
 include('../Classes/Connect.php');
+include('../Classes/Seller.php');
+
 $Con=new Connect;
 $db=$Con->getConnection();
 ?>
@@ -101,14 +103,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $SellerPhoneNo = test_input($_POST["SellerPhoneNo"]);
   $SellerPassword = test_input($_POST["SellerPassword"]);
 
-  $sql = "INSERT INTO Seller (SellerFirstName,SellerLastName,SellerUserName,SellerEmail,SellerPhoneNo,SellerPassword) VALUES ('$SellerFirstName','$SellerLastName','$SellerUserName','$SellerEmail','$SellerPhoneNo','$SellerPassword')";
-  $res = $db->query($sql);
-  echo $sql;
-  if ($res) {
-    echo "<script> alert('Data inserted successfully.')</script>";
-  } else {
-    echo "<script> alert('Failed to insert data. Error: " . $db->error . "')</script>";
-  }
+  // $sql = "INSERT INTO Seller (SellerFirstName,SellerLastName,SellerUserName,SellerEmail,SellerPhoneNo,SellerPassword) VALUES ('$SellerFirstName','$SellerLastName','$SellerUserName','$SellerEmail','$SellerPhoneNo','$SellerPassword')";
+  // $res = $db->query($sql);
+  // echo $sql;
+  // if ($res) {
+  //   echo "<script> alert('Data inserted successfully.')</script>";
+  // } else {
+  //   echo "<script> alert('Failed to insert data. Error: " . $db->error . "')</script>";
+  // }
 }
 
 function test_input($data) {
@@ -117,6 +119,11 @@ function test_input($data) {
   $data = htmlspecialchars($data);
   return $data;
 }
+
+$sellerInstance = new Seller($SellerFirstName,$SellerLastName,$SellerUserName,$SellerEmail,$SellerPhoneNo,$SellerPassword);
+
+$sellerInstance->addSeller();
+
 ?>
 <?php
 // if (isset($_POST['submit'])) {

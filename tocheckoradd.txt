@@ -12,6 +12,10 @@ change connect class values to constant
 
 when entering password let the image be .. so that the password won't be visible and if possible add and eye label that makes the password visible when we touch it
 
+fix event litsener on javascript
+
+change the username is inuse and email is in use to an alert on javascript
+
 
 
 to add
