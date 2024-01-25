@@ -39,6 +39,8 @@ class Seller{
     global $SellerUserName;
     global $db;
     $sql="select * from Seller";
+    $sql2="select * from Buyer";
+
     $res=$db->query($sql);
 
     if($res->num_rows>0)
@@ -56,6 +58,23 @@ class Seller{
       }
       
 }
+
+    $res=$db->query($sql2);
+    if($res->num_rows>0)
+    {
+      while($row=$res->fetch_assoc())
+      {
+      // print_r($row);
+    // echo $row['SellerUserName'];
+      if($SellerUserName==$row['BuyerUserName']){
+
+      // echo " username match";
+        return false;
+      }
+        
+      }
+      
+    }
 return true;
 
 }
@@ -65,6 +84,8 @@ public function emailAvailable(){
   global $SellerEmail;
   global $db;
   $sql="select * from Seller";
+  $sql2="select * from Buyer";
+  
   $res=$db->query($sql);
 
   if($res->num_rows>0)
@@ -83,8 +104,27 @@ public function emailAvailable(){
     
 }
 
+
+$res=$db->query($sql2);
+if($res->num_rows>0)
+{
+  while($row=$res->fetch_assoc())
+  {
+  // print_r($row);
+// echo $row['SellerUserName'];
+  if($SellerEmail==$row['BuyerEmail']){
+
+  // echo " username match";
+    return false;
+  }
+    
+  }
+  
+}
+
 return true;
 }
+
 
   public function addSeller(){
     global $db;

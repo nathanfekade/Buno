@@ -1,4 +1,4 @@
-to check
+TO CHECK
 
 check there is no null (https://www.w3schools.com/php/php_form_url_email.asp)
 
@@ -7,6 +7,10 @@ check if it is an email(https://www.w3schools.com/php/php_form_url_email.asp)
 when reloading a page it gives an error because it tries to send the data again so check
 
 for checking if it is a buyer or seller image 22 on telegram 
+
+fixes buyer.php by inserting into the table by using the constructor not passing arguments to the function and also check if username and email are available from both tables
+
+
 
 change connect class values to constant
 
@@ -20,7 +24,18 @@ change the icon from the local host to our own
 
 how is tabindex done and check all of them
 
-to add
+sometimes the word on comes on the signup page where i displayed to check if it is seller or buyer
+
+change center if possible because it's depreciated
+
+why do we use echo on the htmlspecial characters and also on the radio buttons
+
+
+TO ADD
+forgot password
+
 face recognition
+
 session 
+
 cookie payment integration

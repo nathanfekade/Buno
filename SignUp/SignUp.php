@@ -3,6 +3,8 @@
 
 include('../Classes/Connect.php');
 include('../Classes/Seller.php');
+include('../Classes/Buyer.php');
+
 
 $Con=new Connect;
 $db=$Con->getConnection();
@@ -47,13 +49,22 @@ $db=$Con->getConnection();
    return $data;
  }
  
- $sellerInstance = new Seller($SellerFirstName,$SellerLastName,$SellerUserName,$SellerEmail,$SellerPhoneNo,$SellerPassword);
+
  
  if($SignUpAs=="Seller")
 {
+  $sellerInstance = new Seller($SellerFirstName,$SellerLastName,$SellerUserName,$SellerEmail,$SellerPhoneNo,$SellerPassword);
   $sellerInstance->addSeller();
 }
- 
+
+
+if($SignUpAs=="Buyer")
+{
+   $buyerInstance = new Buyer($SellerFirstName,$SellerLastName,$SellerUserName,$SellerEmail,$SellerPhoneNo,$SellerPassword);
+
+  $buyerInstance->addBuyer($SellerFirstName,$SellerLastName,$SellerUserName,$SellerEmail,$SellerPhoneNo,$SellerPassword);
+}
+
  ?>
  
 
@@ -91,7 +102,7 @@ $db=$Con->getConnection();
                 <div>
             <span class="material-symbols-outlined"> person </span
             ><input type="text" placeholder="First name" name="SellerFirstName"  />
-           
+                    
          
           </div>
           <div>
