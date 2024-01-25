@@ -7,7 +7,55 @@ include('../Classes/Seller.php');
 $Con=new Connect;
 $db=$Con->getConnection();
 ?>
+  <?php
+ // make it one with the above php
 
+ //     error_reporting(E_ALL);
+ // ini_set('display_errors', 1);
+ 
+ // define variables and set to empty values
+ $SellerFirstName = $SellerLastName = $SellerUserName = $SellerEmail = $SellerPhoneNo = $SellerPassword = $SignUpAs="";
+
+ $SellerFirstNameErr = $SellerLastNameErr = $SellerUserNameErr = $SellerEmailErr =  $SellerPhoneNoErr = $SellerPasswordErr = "";
+
+ 
+ if ($_SERVER["REQUEST_METHOD"] == "POST") {
+ 
+   $SellerFirstName = test_input($_POST["SellerFirstName"]);
+   $SellerLastName = test_input($_POST["SellerLastName"]);
+   $SellerUserName = test_input($_POST["SellerUserName"]);
+   $SellerEmail = test_input($_POST["SellerEmail"]);
+   $SellerPhoneNo = test_input($_POST["SellerPhoneNo"]);
+   $SellerPassword = test_input($_POST["SellerPassword"]);
+   $SignUpAs = test_input($_POST["SignUpAs"]);
+  echo $SignUpAs;
+ 
+   // $sql = "INSERT INTO Seller (SellerFirstName,SellerLastName,SellerUserName,SellerEmail,SellerPhoneNo,SellerPassword) VALUES ('$SellerFirstName','$SellerLastName','$SellerUserName','$SellerEmail','$SellerPhoneNo','$SellerPassword')";
+   // $res = $db->query($sql);
+   // echo $sql;
+   // if ($res) {
+   //   echo "<script> alert('Data inserted successfully.')</script>";
+   // } else {
+   //   echo "<script> alert('Failed to insert data. Error: " . $db->error . "')</script>";
+   // }
+ }
+ 
+ function test_input($data) {
+   $data = trim($data);
+   $data = stripslashes($data);
+   $data = htmlspecialchars($data);
+   return $data;
+ }
+ 
+ $sellerInstance = new Seller($SellerFirstName,$SellerLastName,$SellerUserName,$SellerEmail,$SellerPhoneNo,$SellerPassword);
+ 
+ if($SignUpAs=="Seller")
+{
+  $sellerInstance->addSeller();
+}
+ 
+ ?>
+ 
 
 
 <!DOCTYPE html>
@@ -43,7 +91,8 @@ $db=$Con->getConnection();
                 <div>
             <span class="material-symbols-outlined"> person </span
             ><input type="text" placeholder="First name" name="SellerFirstName"  />
-       
+           
+         
           </div>
           <div>
             <span class="material-symbols-outlined"> person </span
@@ -75,7 +124,18 @@ $db=$Con->getConnection();
             ><input type="text" placeholder="Password" name="SellerPassword" />
        
           </div>
+<div>
+SignUp As:
+<input type="radio" name="SignUpAs"
+<?php if (isset($SignUpAs) && $SignUpAs=="Buyer") echo "checked";?>
+value="Buyer">Buyer
+<input type="radio" name="SignUpAs"
+<?php if (isset($SignUpAs) && $SignUpAs=="Seller") echo "checked";?>
+value="Seller">Seller
+
        
+</div>
+
         
       </div>
       <center>
@@ -87,44 +147,14 @@ $db=$Con->getConnection();
     </form>
   
   
-  <?php
- 
-//     error_reporting(E_ALL);
-// ini_set('display_errors', 1);
 
-// define variables and set to empty values
-$SellerFirstName = $SellerLastName = $SellerUserName = $SellerEmail = $SellerPhoneNo = $SellerPassword ="";
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  $SellerFirstName = test_input($_POST["SellerFirstName"]);
-  $SellerLastName = test_input($_POST["SellerLastName"]);
-  $SellerUserName = test_input($_POST["SellerUserName"]);
-  $SellerEmail = test_input($_POST["SellerEmail"]);
-  $SellerPhoneNo = test_input($_POST["SellerPhoneNo"]);
-  $SellerPassword = test_input($_POST["SellerPassword"]);
+    </div>
+    <script src="SignUp.js"></script>
+  </body>
+</html>
 
-  // $sql = "INSERT INTO Seller (SellerFirstName,SellerLastName,SellerUserName,SellerEmail,SellerPhoneNo,SellerPassword) VALUES ('$SellerFirstName','$SellerLastName','$SellerUserName','$SellerEmail','$SellerPhoneNo','$SellerPassword')";
-  // $res = $db->query($sql);
-  // echo $sql;
-  // if ($res) {
-  //   echo "<script> alert('Data inserted successfully.')</script>";
-  // } else {
-  //   echo "<script> alert('Failed to insert data. Error: " . $db->error . "')</script>";
-  // }
-}
 
-function test_input($data) {
-  $data = trim($data);
-  $data = stripslashes($data);
-  $data = htmlspecialchars($data);
-  return $data;
-}
-
-$sellerInstance = new Seller($SellerFirstName,$SellerLastName,$SellerUserName,$SellerEmail,$SellerPhoneNo,$SellerPassword);
-
-$sellerInstance->addSeller();
-
-?>
 <?php
 // if (isset($_POST['submit'])) {
   
@@ -147,14 +177,6 @@ $sellerInstance->addSeller();
 //   }
 // }
 ?>
-
-    </div>
-    <script src="SignUp.js"></script>
-  </body>
-</html>
-
-
-
 
 
  

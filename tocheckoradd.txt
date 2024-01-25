@@ -16,7 +16,9 @@ fix event litsener on javascript
 
 change the username is inuse and email is in use to an alert on javascript
 
+change the icon from the local host to our own
 
+how is tabindex done and check all of them
 
 to add
 face recognition
