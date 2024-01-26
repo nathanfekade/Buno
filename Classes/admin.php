@@ -1,0 +1,1 @@
+// select all from verification then approve the proper ones may be with a button for both image and document then send an email if possible

@@ -1,0 +1,4 @@
+how seller verification works
+
+after a seller signups it goes to the verification page then the seller enters his documents and we get the sellerid by using the seller username and once its done we output thanks  we will verify seller documents this usually takes a day then
+after we verify if its possible we send them email but at least we should change the boolean variables if verified. then when the user tries to signin if possible we tell them that they have been verified once we shouldn't repeat it when they signin again and if the user hasn't been verified we output sorry you still haven't been verified or you have failed the verification process
