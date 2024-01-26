@@ -34,10 +34,18 @@ add emoji for the rating
 
 check the pages title and icon
 
+change the placeholder="Document" to the appropriate
+
+
 TO ADD
+
+in SellerVerification add passport/license
+
 forgot password
 
 face recognition
+
+if possible signin with facercogintion
 
 session 
 

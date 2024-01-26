@@ -156,6 +156,8 @@ return true;
    // echo $sql;
     if ($res) {
       echo "<script> alert('Data inserted successfully.')</script>";
+      header('Location: ../VerificationPage/VerificationPage.php');
+      exit;
     } else {
       echo "<script> alert('Failed to insert data. Error: " . $db->error . "')</script>";
     }
