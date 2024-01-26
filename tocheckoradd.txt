@@ -28,6 +28,8 @@ i didn't use the filepath when uploading file in the sellerverification page do 
 
 change the username is inuse and email is in use to an alert on javascript
 
+when deleting  a file path from the database how do i also delete its folder
+
 change the icon from the local host to our own
 
 how is tabindex done and check all of them
