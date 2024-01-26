@@ -30,6 +30,9 @@ change center if possible because it's depreciated
 
 why do we use echo on the htmlspecial characters and also on the radio buttons
 
+add emoji for the rating
+
+check the pages title and icon
 
 TO ADD
 forgot password

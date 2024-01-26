@@ -92,6 +92,7 @@ CREATE TABLE SellerVerification (
   SellerDocuments varchar(1000),
   SellerDocumentImage varchar(1000),
   SellerDocumentVerificationStatus boolean DEFAULT False,
-  SellerImageVerificationStatus boolean DEFAULT False
-   
+  SellerImageVerificationStatus boolean DEFAULT False,
+  SellerVerificationFailed boolean DEFAULT False,
+  FOREIGN KEY (SellerID) REFERENCES Seller(SellerId)
 )
