@@ -22,12 +22,12 @@ class Seller{
   $SellerPhoneNo, $SellerPassword)
   {
     
-    $this->$SellerFirstName=$SellerFirstName;
-    $this->$SellerLastName=$SellerLastName;
-    $this->$SellerUserName=$SellerUserName;
-    $this->$SellerEmail=$SellerEmail;
-    $this->$SellerPhoneNo=$SellerPhoneNo;
-    $this->$SellerPassword=$SellerPassword;
+    $this->SellerFirstName=$SellerFirstName;
+    $this->SellerLastName=$SellerLastName;
+    $this->SellerUserName=$SellerUserName;
+    $this->SellerEmail=$SellerEmail;
+    $this->SellerPhoneNo=$SellerPhoneNo;
+    $this->SellerPassword=$SellerPassword;
   
   }
 

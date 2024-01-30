@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Dosis&family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat+Alternates:ital,wght@0,100;0,200;1,100&display=swap');
+
+
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+ }
+ body{
+   min-height: 100vh;
+ }
+ header{
+   margin-bottom: 5%;
+ }
+ .header__nav{
+   display:flex;
+   justify-content: space-between;
+   border: 1px solid transparent;
+   background-color:#1f4197;
+   /*#e1e8ed*/
+ }
+ .header__logo{
+   flex:1;
+   font-size:24px;
+   font-family: 'Exo 2', sans-serif;
+   padding:20px;
+   color: #fff;
+   font-weight: bold;
+ }
+ .header__nav h4{
+   padding:20px;
+   font-family: 'Exo 2', sans-serif;
+   font-size:18px;
+   color: #fff;
+   font-weight: 200; 
+   opacity: 0.9;
+ }
+ .login-form{
+   display: flex;
+   flex-direction: column;
+   justify-content:center;
+   align-items: cener;
+   width: 500px;
+   margin: auto;
+   gap: 60px;
+   border: 1px solid #bbb;
+   border-radius: 10px;
+   box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+   padding: 20px;
+   
+ }
+ .login-form__title{
+   font-family: 'Exo 2', sans-serif;
+   font-size: 30px;
+   text-align: center;
+   font-weight: 800;
+ }
+form{
+   display: flex;
+   flex-direction: column;
+}
+
+.input-box{
+ display: flex;
+ width: 100%;
+ margin: 20px 0;
+ border: 2px solid #a9a4a4;
+ border-radius: 40px;
+}
+
+.input-box input{
+ width: 100%;
+ height: 100%;
+ background: transparent;
+ border: none;
+ outline: none;
+ padding: 14px 20px;
+ font-size: 16px;
+ font-family: 'Exo 2', sans-serif;
+}
+.input-box input::placeholder{
+ color: #a9a4a4;
+ font-family: 'Exo 2',sans-serif;
+ 
+ font-size: 14px;
+}
+.login-btn{
+ width: 100%;
+ padding: 20px;
+ border-radius: 40px;
+ border: transparent;
+ background-color:#1f4197;
+ color: #fff;
+ font-family: 'Exo 2',sans-serif;
+ font-size: 16px;
+ text-align: center;
+ font-weight: 600;
+ margin: 10px 0;
+}
+.signin-btn{
+ border: 1px solid #2452c7;
+ text-align: center;
+ padding: 20px;
+ border-radius: 40px;
+ margin-top: 10px;
+ margin-bottom: 20px;
+ text-decoration: none;
+ color: #1f4197;
+ font-family: 'Exo 2',sans-serif;
+ font-size: 16px;
+}
+.signin-btn:hover{
+ background-color: #1f4197;
+ color: #fff;
+ font-weight: 600;
+}
+
+.or{
+ display: flex;
+ gap: 3px;
+ align-items: center;
+ margin: 4px 0;
+}
+
+.or hr{
+ width: 100%;
+ height: 0.5px;
+ color: rgb(255, 255, 255);
+}
+
+.or h6{
+ font-weight: 300;
+ font-size: 16px;
+ color: rgba(87, 83, 83,0.9);
+ font-family: sans-serif;
+}
+
