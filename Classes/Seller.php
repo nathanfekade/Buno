@@ -4,6 +4,7 @@
 $Con=new Connect;
 $db=$Con->getConnection();
 
+session_start();
 
 class Seller{
 
@@ -105,22 +106,22 @@ public function emailAvailable(){
 }
 
 
-$res=$db->query($sql2);
-if($res->num_rows>0)
-{
-  while($row=$res->fetch_assoc())
+  $res=$db->query($sql2);
+  if($res->num_rows>0)
   {
-  // print_r($row);
-// echo $row['SellerUserName'];
-  if($SellerEmail==$row['BuyerEmail']){
+      while($row=$res->fetch_assoc())
+      {
+      // print_r($row);
+    // echo $row['SellerUserName'];
+        if($SellerEmail==$row['BuyerEmail']){
 
-  // echo " username match";
-    return false;
-  }
+        // echo " username match";
+          return false;
+        }
+        
+      }
     
   }
-  
-}
 
 return true;
 }
@@ -128,6 +129,7 @@ return true;
 
   public function addSeller(){
     global $db;
+    global $SellerId;
     global $SellerFirstName;
     global $SellerLastName;
     global $SellerUserName;
@@ -150,14 +152,27 @@ return true;
     }
 
   
+   
 
     $sql = "INSERT INTO Seller (SellerFirstName,SellerLastName,SellerUserName,SellerEmail,SellerPhoneNo,SellerPassword) VALUES ('$SellerFirstName','$SellerLastName','$SellerUserName','$SellerEmail','$SellerPhoneNo','$SellerPassword')";
-    $res =  $db->query($sql);
+     $res =  $db->query($sql);
    // echo $sql;
+
     if ($res) {
       echo "<script> alert('Data inserted successfully.')</script>";
-      header('Location: ../VerificationPage/VerificationPage.php');
-      exit;
+
+      $sql2="select SellerId from Seller where SellerUserName='$SellerUserName'";
+      $res2 =  $db->query($sql2);
+
+        if($row=$res2->fetch_assoc()){
+          // Set session variables
+          $_SESSION["SellerId"] = $row['SellerId'];
+          // redirect to verification page
+          header('Location: ../VerificationPage/VerificationPage.php');
+          exit;
+        }
+      
+    
     } else {
       echo "<script> alert('Failed to insert data. Error: " . $db->error . "')</script>";
     }

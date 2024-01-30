@@ -44,7 +44,7 @@ $db=$Con->getConnection();
  
  function test_input($data) {
    $data = trim($data);
-   $data = stripslashes($data);
+   $data = stripslashes($data);//check what it does
    $data = htmlspecialchars($data);
    return $data;
  }

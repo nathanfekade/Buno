@@ -6,6 +6,8 @@ check if it is an email(https://www.w3schools.com/php/php_form_url_email.asp)
 
 when reloading a page it gives an error because it tries to send the data again so check
 
+the place where i echo to check if it is a seller or buyer sometimes echos a value on and i dont know what it is.
+
 check the varchar for every attribute
 
 and fix issue of autincrement and of default and unique
@@ -18,6 +20,8 @@ check all databases are closed
 
 check if the file is pdf only or image only  or other types according to the problem i think its in traversy php tutorial video
 
+if possible creditcard verification
+
 change connect class values to constant
 
 when entering password let the image be .. so that the password won't be visible and if possible add and eye label that makes the password visible when we touch it
@@ -25,6 +29,8 @@ when entering password let the image be .. so that the password won't be visible
 fix event litsener on javascript
 
 i didn't use the filepath when uploading file in the sellerverification page do i need to (https://www.youtube.com/watch?v=3Hz5WanrhuE)
+
+maybe take two images for sellerverifcation
 
 change the username is inuse and email is in use to an alert on javascript
 
