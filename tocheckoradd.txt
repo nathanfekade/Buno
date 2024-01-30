@@ -6,7 +6,11 @@ check if it is an email(https://www.w3schools.com/php/php_form_url_email.asp)
 
 when reloading a page it gives an error because it tries to send the data again so check
 
+I think we should add the finalprice on the convob table and take the last rows value each time
+
 the place where i echo to check if it is a seller or buyer sometimes echos a value on and i dont know what it is.
+
+fix where i selected all rows and only use the rows i need
 
 check the varchar for every attribute
 

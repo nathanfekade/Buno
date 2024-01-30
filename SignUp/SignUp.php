@@ -32,6 +32,20 @@ $db=$Con->getConnection();
    $SignUpAs = test_input($_POST["SignUpAs"]);
   echo $SignUpAs;
  
+  if($SignUpAs=="Seller")
+  {
+    $sellerInstance = new Seller($SellerFirstName,$SellerLastName,$SellerUserName,$SellerEmail,$SellerPhoneNo,$SellerPassword);
+    $sellerInstance->addSeller();
+  }
+  
+  
+  if($SignUpAs=="Buyer")
+  {
+     $buyerInstance = new Buyer($SellerFirstName,$SellerLastName,$SellerUserName,$SellerEmail,$SellerPhoneNo,$SellerPassword);
+  
+    $buyerInstance->addBuyer();
+  }
+
    // $sql = "INSERT INTO Seller (SellerFirstName,SellerLastName,SellerUserName,SellerEmail,SellerPhoneNo,SellerPassword) VALUES ('$SellerFirstName','$SellerLastName','$SellerUserName','$SellerEmail','$SellerPhoneNo','$SellerPassword')";
    // $res = $db->query($sql);
    // echo $sql;
@@ -51,19 +65,7 @@ $db=$Con->getConnection();
  
 
  
- if($SignUpAs=="Seller")
-{
-  $sellerInstance = new Seller($SellerFirstName,$SellerLastName,$SellerUserName,$SellerEmail,$SellerPhoneNo,$SellerPassword);
-  $sellerInstance->addSeller();
-}
 
-
-if($SignUpAs=="Buyer")
-{
-   $buyerInstance = new Buyer($SellerFirstName,$SellerLastName,$SellerUserName,$SellerEmail,$SellerPhoneNo,$SellerPassword);
-
-  $buyerInstance->addBuyer($SellerFirstName,$SellerLastName,$SellerUserName,$SellerEmail,$SellerPhoneNo,$SellerPassword);
-}
 
  ?>
  
@@ -132,7 +134,7 @@ if($SignUpAs=="Buyer")
           </div> -->
           <div>
             <span class="material-symbols-outlined"> lock </span
-            ><input type="text" placeholder="Password" name="SellerPassword" />
+            ><input type="password" placeholder="Password" name="SellerPassword" />
        
           </div>
 <div>
