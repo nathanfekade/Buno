@@ -1,9 +1,9 @@
 <?php
 
-
-include('../Classes/Connect.php');
-$Con=new Connect;
-$db=$Con->getConnection();
+include('../Classes/verification.php');
+// include('../Classes/Connect.php');
+// $Con=new Connect;
+// $db=$Con->getConnection();
 
 
 
@@ -20,15 +20,20 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES['SellerDocuments'])&& $
 
   // moving files to the targetPath
   if(move_uploaded_file($_FILES["SellerDocuments"]["tmp_name"],$targetPath)&& move_uploaded_file($_FILES["SellerDocumentImage"]["tmp_name"],$targetImagePath)){
+
+    $verificationInstance = new verification($targetPath,$targetImagePath);
+
+    $verificationInstance->insertDocuments( $targetPath,$targetImagePath);
+
     //Moved successfully write details to db
-    $sql="INSERT INTO SellerVerification(SellerDocuments,SellerDocumentImage) VALUES ('$targetPath','$targetImagePath')";
+    // $sql="INSERT INTO SellerVerification(SellerDocuments,SellerDocumentImage) VALUES ('$targetPath','$targetImagePath')";
     
-    if($db->query($sql)==true){
-      echo "File uploaded and saved to DB";
-    }
-    else{
-      echo "Error:  $sql Error Details:  $Con->error";
-    }
+    // if($db->query($sql)==true){
+    //   echo "File uploaded and saved to DB";
+    // }
+    // else{
+    //   echo "Error:  $sql Error Details:  $Con->error";
+    // }
   
  
 }
