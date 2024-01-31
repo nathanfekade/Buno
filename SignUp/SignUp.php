@@ -18,7 +18,7 @@ $db=$Con->getConnection();
  // define variables and set to empty values
  $SellerFirstName = $SellerLastName = $SellerUserName = $SellerEmail = $SellerPhoneNo = $SellerPassword = $SignUpAs="";
 
- $SellerFirstNameErr = $SellerLastNameErr = $SellerUserNameErr = $SellerEmailErr =  $SellerPhoneNoErr = $SellerPasswordErr = "";
+
 
  
  if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -103,28 +103,28 @@ $db=$Con->getConnection();
           <!-- how to add id on the form -->
                 <div>
             <span class="material-symbols-outlined"> person </span
-            ><input type="text" placeholder="First name" name="SellerFirstName"  />
+            ><input type="text" required placeholder="First name" name="SellerFirstName"  />
                     
          
           </div>
           <div>
             <span class="material-symbols-outlined"> person </span
-            ><input type="text" placeholder="Last name" name="SellerLastName" />
+            ><input type="text" required  placeholder="Last name" name="SellerLastName" />
            
           </div>
           <div>
             <span class="material-symbols-outlined"> person </span
-            ><input type="text"  placeholder="User name" name="SellerUserName" />
+            ><input type="text" required placeholder="User name" name="SellerUserName" />
            
           </div>
           <div>
             <span class="material-symbols-outlined"> mail </span
-            ><input type="text" placeholder="Email" name="SellerEmail" />
+            ><input type="text" required placeholder="Email" name="SellerEmail" />
            
           </div>
           <div>
             <span class="material-symbols-outlined"> call </span
-            ><input type="number" placeholder="Phone" name="SellerPhoneNo"  />
+            ><input type="number" required placeholder="Phone" name="SellerPhoneNo"  />
             
           </div>
           <!-- <div>
@@ -134,12 +134,15 @@ $db=$Con->getConnection();
           </div> -->
           <div>
             <span class="material-symbols-outlined"> lock </span
-            ><input type="password" placeholder="Password" name="SellerPassword" />
+            ><input type="password" required placeholder="Password" name="SellerPassword" />
        
           </div>
 <div>
+
+<!-- how do the radio button work particulary the php code in it. -->
+
 SignUp As:
-<input type="radio" name="SignUpAs"
+<input type="radio" name="SignUpAs" required
 <?php if (isset($SignUpAs) && $SignUpAs=="Buyer") echo "checked";?>
 value="Buyer">Buyer
 <input type="radio" name="SignUpAs"
