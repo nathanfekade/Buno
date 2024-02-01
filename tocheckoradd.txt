@@ -1,5 +1,9 @@
 TO CHECK
 
+!!!!! seller must not directly go to sellerpage we must first check if its verified when they login
+
+!!! must do admin page
+
 check there is no null (https://www.w3schools.com/php/php_form_url_email.asp)
 
 check if it is an email(https://www.w3schools.com/php/php_form_url_email.asp)

@@ -96,3 +96,6 @@ CREATE TABLE SellerVerification (
   SellerVerificationFailed boolean DEFAULT False,
   FOREIGN KEY (SellerID) REFERENCES Seller(SellerId)
 )
+
+--10
+CREATE TABLE chat (SellerUserName varchar(50),BuyerUserName varchar(50),sellerConvo varchar(500),buyerConvo varchar(500),chatTime varchar(100));

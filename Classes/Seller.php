@@ -161,16 +161,16 @@ return true;
     if ($res) {
       echo "<script> alert('Data inserted successfully.')</script>";
 
-      $sql2="select SellerId from Seller where SellerUserName='$SellerUserName'";
-      $res2 =  $db->query($sql2);
+      // $sql2="select SellerId from Seller where SellerUserName='$SellerUserName'";
+      // $res2 =  $db->query($sql2);
 
-        if($row=$res2->fetch_assoc()){
+      //   if($row=$res2->fetch_assoc()){
           // Set session variables
-          $_SESSION["SellerId"] = $row['SellerId'];
+          $_SESSION["SellerUserName"] = $row['SellerUserName'];
           // redirect to verification page
           header('Location: ../VerificationPage/VerificationPage.php');
           exit;
-        }
+        // }
       
     
     } else {
