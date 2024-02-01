@@ -1,0 +1,21 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.wrapper{
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+}
+
+.chatList{
+  border: 1px solid red;
+  flex: 1;
+}
+
+.chatInstance{
+  border: 1px solid red;
+  flex: 4;
+}
