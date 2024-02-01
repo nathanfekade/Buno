@@ -34,8 +34,8 @@ class Login{
     $sql="select SellerUserName,SellerEmail,SellerPassword from Seller";
     $sql2="select BuyerUserName,BuyerEmail,BuyerPassword from Buyer";
 
-    echo "$UserNameOrEmail user in function";
-    echo "$Password password in function";
+    // echo "$UserNameOrEmail user in function";
+    // echo "$Password password in function";
 
     $res=$db->query($sql);
 
@@ -53,10 +53,15 @@ class Login{
           $_SESSION["SellerUserName"] = $row['SellerUserName'];
 
           echo " username match";
-
-          // redirect to home page
-          header('Location: ../SellerPage/SellerPage.php');
+          //temporarily to chat page
+          header('Location: ../chat/SellerChat.php');
           exit;
+          // redirect to home page
+          // header('Location: ../SellerPage/SellerPage.php');
+          // exit;
+        }
+        else{
+          echo "<script> alert('incorrect password') </script>";
         }
 
           //  echo "f".$UserNameOrEmail."e";
@@ -80,10 +85,14 @@ class Login{
         $_SESSION["BuyerUserName"] = $row['BuyerUserName'];
 
         echo " username match";
-
+//temporarily to chat page
+header('Location: ../chat/BuyerChat.php');
         // redirect to home page
-        header('Location: ../HomePage/HomePage.php');
-        exit;
+        // header('Location: ../HomePage/HomePage.php');
+        // exit;
+      }
+      else{
+        echo "<script> alert('incorrect password') </script>";
       }
 
         //  echo "f".$UserNameOrEmail."e";
