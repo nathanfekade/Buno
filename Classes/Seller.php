@@ -166,7 +166,8 @@ return true;
 
       //   if($row=$res2->fetch_assoc()){
           // Set session variables
-          $_SESSION["SellerUserName"] = $row['SellerUserName'];
+          $_SESSION["SellerUserName"] = $SellerUserName;
+          echo $_SESSION["SellerUserName"];
           // redirect to verification page
           header('Location: ../VerificationPage/VerificationPage.php');
           exit;

@@ -17,7 +17,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES['SellerDocuments'])&& $
   $imageName=basename($_FILES["SellerDocumentImage"]["name"]);
   $targetPath=$targetDir.$fileName;
   $targetImagePath=$targetDir.$imageName;
-
+  
+  
+  
+  
   // moving files to the targetPath
   if(move_uploaded_file($_FILES["SellerDocuments"]["tmp_name"],$targetPath)&& move_uploaded_file($_FILES["SellerDocumentImage"]["tmp_name"],$targetImagePath)){
 

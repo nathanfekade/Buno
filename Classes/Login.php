@@ -54,11 +54,11 @@ class Login{
 
           echo " username match";
           //temporarily to chat page
-          header('Location: ../chat/SellerChat.php');
-          exit;
-          // redirect to home page
-          // header('Location: ../SellerPage/SellerPage.php');
+          // header('Location: ../chat/SellerChat.php');
           // exit;
+          // redirect to home page
+          header('Location: ../SellerPage/SellerPage.php');
+          exit;
         }
         else{
           echo "<script> alert('incorrect password') </script>";
@@ -86,10 +86,11 @@ class Login{
 
         echo " username match";
 //temporarily to chat page
-header('Location: ../chat/BuyerChat.php');
-        // redirect to home page
-        // header('Location: ../HomePage/HomePage.php');
-        // exit;
+// header('Location: ../chat/BuyerChat.php');
+   
+// redirect to home page 
+        header('Location: ../BuyerPage/BuyerPage.php');
+        exit;
       }
       else{
         echo "<script> alert('incorrect password') </script>";

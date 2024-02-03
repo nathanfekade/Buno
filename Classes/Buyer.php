@@ -27,8 +27,8 @@ class Buyer{
     $this->BuyerEmail=$BuyerEmail;
     $this->BuyerPhoneNo=$BuyerPhoneNo;
     $this->BuyerPassword=$BuyerPassword;
-  echo "$BuyerFirstName constructor";
-   echo "$BuyerLastName constructor";
+  // echo "$BuyerFirstName constructor";
+  //  echo "$BuyerLastName constructor";
   // echo $BuyerPhoneNo;
  
 
@@ -157,7 +157,7 @@ $check=$this->userNameAvailable();
       return ;
     }
 
-  echo "$BuyerFirstName in function";
+  
 
   
   // $sql = "INSERT INTO Buyer (BuyerFirstName,BuyerLastName,BuyerUserName,BuyerEmail,BuyerPhoneNo,BuyerPassword) VALUES ('$this->BuyerFirstName','$this->BuyerLastName','$this->BuyerUserName','$this->BuyerEmail','$this->BuyerPhoneNo','$this->BuyerPassword')";
@@ -167,13 +167,13 @@ $check=$this->userNameAvailable();
    // echo $sql;
     if ($res) {
       echo "<script> alert('Data inserted successfully.')</script>";
-         $_SESSION["BuyerUserName"] = $row['BuyerUserName'];
+         $_SESSION["BuyerUserName"] =$BuyerUserName ;
 
-      //  echo " username match";
+        echo  $_SESSION["BuyerUserName"]  ;
 
         // redirect to home page
-        header('Location: ../HomePage/HomePage.php');
-        exit;
+        // header('Location: ../HomePage/HomePage.php');
+        // exit;
     } else {
       echo "<script> alert('Failed to insert data. Error: " . $db->error . "')</script>";
     }

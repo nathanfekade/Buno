@@ -10,7 +10,7 @@ session_start();
 
 class verification{
 
-  public $sellerId;
+  public $SellerUserName;
   public $targetPath;
   public $targetImagePath;
 
@@ -32,15 +32,15 @@ class verification{
 function insertDocuments($targetPath,$targetImagePath){
 
   global $db;
-  global $sellerId;
+  global $SellerUserName;
   global $targetPath;
   global $targetImagePath;
 
-  $sellerId=$_SESSION['SellerId'];
+  $SellerUserName2=$_SESSION['SellerUserName'];
 
 // check how it did find the location eventhough i am in verification.php not VerificationPage.verificationPage.php;
-  echo "<script>Console.log('$sellerId');</script>" ;
-  $sql="INSERT INTO SellerVerification(SellerId,SellerDocuments,SellerDocumentImage) VALUES ($sellerId,'$targetPath','$targetImagePath')";
+  echo "<script>Console.log('$SellerUserName');</script>" ;
+  $sql="INSERT INTO SellerVerification(SellerUserName,SellerDocuments,SellerDocumentImage) VALUES ('$SellerUserName2','$targetPath','$targetImagePath')";
     
   if($db->query($sql)==true){
     echo "File uploaded and saved to DB";
