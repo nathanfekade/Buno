@@ -1,5 +1,11 @@
 TO CHECK
 
+ask perplexity  or other AI for improvements like security
+
+!!! create logout
+
+reload page comment
+
 !!!!! seller must not directly go to sellerpage we must first check if its verified when they login
 
 !!! must do admin page
@@ -10,7 +16,6 @@ check if it is an email(https://www.w3schools.com/php/php_form_url_email.asp)
 
 when reloading a page it gives an error because it tries to send the data again so check
 
-I think we should add the finalprice on the convob table and take the last rows value each time
 
 the place where i echo to check if it is a seller or buyer sometimes echos a value on and i dont know what it is.
 
@@ -22,7 +27,6 @@ and fix issue of autincrement and of default and unique
 
 for checking if it is a buyer or seller image 22 on telegram 
 
-fixes buyer.php by inserting into the table by using the constructor not passing arguments to the function and also check if username and email are available from both tables
 
 check all databases are closed
 
@@ -32,7 +36,7 @@ if possible creditcard verification
 
 change connect class values to constant
 
-when entering password let the image be .. so that the password won't be visible and if possible add and eye label that makes the password visible when we touch it
+when entering password if possible add and eye label that makes the password visible when we touch it
 
 fix event litsener on javascript
 
@@ -40,11 +44,10 @@ i didn't use the filepath when uploading file in the sellerverification page do 
 
 maybe take two images for sellerverifcation
 
-change the username is inuse and email is in use to an alert on javascript
+change the username is inuse and email is in use from an alert 
 
 when deleting  a file path from the database how do i also delete its folder
 
-change the icon from the local host to our own
 
 how is tabindex done and check all of them
 
@@ -54,7 +57,6 @@ change center if possible because it's depreciated
 
 why do we use echo on the htmlspecial characters and also on the radio buttons
 
-add emoji for the rating
 
 check the pages title and icon
 

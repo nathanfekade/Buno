@@ -1,6 +1,6 @@
 -- first edited to make username and email unique 
 
-CREATE TABLE Seller ( SellerId int AUTO_INCREMENT,
+CREATE TABLE Seller ( 
  SellerFirstName varchar(50), 
  SellerLastName varchar(50), 
  SellerUserName varchar(50) UNIQUE, 
@@ -10,7 +10,7 @@ CREATE TABLE Seller ( SellerId int AUTO_INCREMENT,
  PRIMARY KEY(SellerId) );
 
 -- second
-CREATE TABLE Buyer ( BuyerId int AUTO_INCREMENT,
+CREATE TABLE Buyer (
  BuyerFirstName varchar(50), 
  BuyerLastName varchar(50), 
  BuyerUserName varchar(50) UNIQUE, 
@@ -28,9 +28,7 @@ CREATE TABLE Product (
   ProductImageFileName varchar(300),
   ProductDate date,
   ProductBasePrice float,
-  ProductFinalPrice float,
   ProductDescription varchar(1000),
-  ProductSold boolean,
   SellerId int,
   PRIMARY KEY(ProductId),
   FOREIGN KEY (SellerId) REFERENCES seller(SellerId)
@@ -39,62 +37,43 @@ CREATE TABLE Product (
 -- 4
 CREATE TABLE ProductRating(
     ProductId int,
-    BuyerId int,
+    BuyerUserName varchar(50),
     ProductRating int,
 	FOREIGN KEY (ProductId) REFERENCES product(ProductId),
-    FOREIGN KEY (BuyerId) REFERENCES buyer(BuyerId)
+    FOREIGN KEY (BuyerUserName) REFERENCES buyer(BuyerUserName)
 )
 
 --5
 CREATE TABLE ProductComment(
     ProductId int,
-    BuyerId int,
+    BuyerUserName varchar(50),
     ProductComment varchar(1000),
 	FOREIGN KEY (ProductId) REFERENCES product(ProductId),
-    FOREIGN KEY (BuyerId) REFERENCES buyer(BuyerId)
+    FOREIGN KEY (BuyerUserName) REFERENCES buyer(BuyerUserName)
 )
 
 --6
 CREATE TABLE PaymentDetails(
     ProductId int,
-    BuyerId int,
+    BuyerUserName varchar(50),
     PurchaseDate Date,
 	FOREIGN KEY (ProductId) REFERENCES product(ProductId),
-    FOREIGN KEY (BuyerId) REFERENCES buyer(BuyerId)
+    FOREIGN KEY (BuyerUserName) REFERENCES buyer(BuyerUserName)
 )
 
 --7
-CREATE TABLE BuyerLocation(
   
-  BuyerId int,
-  BuyerCity varchar(100),
-  BuyerCountry varchar(100),
-  BuyerZipCode varchar(100),
-  BuyerAddress varchar(100),
-   FOREIGN KEY (BuyerId) REFERENCES buyer(BuyerId)
-)
---8
   
-CREATE TABLE SellerLocation(
-  
-  SellerId int,
-  SellerCity varchar(100),
-  SellerCountry varchar(100),
-  SellerZipCode varchar(100),
-  SellerAddress varchar(100),
-   FOREIGN KEY (SellerID) REFERENCES Seller(SellerId)
-    
-)  
---9
+
 CREATE TABLE SellerVerification (
     
-  SellerId int,
+   SellerUserName varchar(50),
   SellerDocuments varchar(1000),
   SellerDocumentImage varchar(1000),
   SellerDocumentVerificationStatus boolean DEFAULT False,
   SellerImageVerificationStatus boolean DEFAULT False,
   SellerVerificationFailed boolean DEFAULT False,
-  FOREIGN KEY (SellerID) REFERENCES Seller(SellerId)
+  FOREIGN KEY (SellerUserName) REFERENCES Seller(SellerUserName)
 )
 
 --10

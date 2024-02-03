@@ -5,69 +5,81 @@ include('../Classes/Connect.php');
 $Con=new Connect;
 $db=$Con->getConnection();
 
-// $uniqueSeller=[];
+// if (isset($_GET["SellerUserName"])) {
+//   $Seller = $_GET["SellerUserName"];
+//   echo $SellerUserName;
 
+// }
+$SellerUserName=$_SESSION["SellerProductUserName"];
+echo $SellerUserName;
 
 if (isset($_POST["chatValue"])) {
   // &&isset($_POST["Login"])
 //  echo $_POST["UserNameOrEmail"];
   $chatValue = test_input($_POST["chatValue"]);
- 
-echo "chat= $chatValue";
 
-$textInsertTime = getdate();
-$buyerUsername=$_SESSION['BuyerUserName'] ;
-echo "buyer username= $buyerUsername || ";
-$sql = "INSERT INTO chat ( SellerUserName, BuyerUserName, buyerConvo, sellerConvo,chatTime) VALUES ('y','$buyerUsername' , '$chatValue', NULL,'$textInsertTime[0]')";
+    // echo "chat= $chatValue";
+function send(){
+  global $db;
+  global $chatValue;
+
+  global $SellerUserName;
+  $textInsertTime = getdate();
+  $buyerUsername=$_SESSION['BuyerUserName'] ;
+  echo "buyer username= $buyerUsername || ";
+  $sql = "INSERT INTO chat ( SellerUserName, BuyerUserName, buyerConvo, sellerConvo,chatTime) VALUES ('$SellerUserName','$buyerUsername' , '$chatValue', NULL,'$textInsertTime[0]')";
 
 
 $res =  $db->query($sql);
-listChats();
+}
+send();
+   
+// listChats();
   
 }
-function listChats(){
+// function listChats(){
 
-  global $db;
-  echo 'er';
-  $buyerUsername2=$_SESSION['BuyerUserName'] ;
+//   global $db;
+//   echo 'er';
+//   $buyerUsername2=$_SESSION['BuyerUserName'] ;
   
-  $sellers=[];
-  $sql2 = "SELECT SellerUserName FROM chat where BuyerUserName='$buyerUsername2'";
+//   $sellers=[];
+//   $sql2 = "SELECT SellerUserName FROM chat where BuyerUserName='$buyerUsername2'";
   
-  $res2=$db->query($sql2);  
-  if($res2->num_rows>0)
-  {
-    $count=1;
-    while($row=$res2->fetch_assoc())
-    {
+//   $res2=$db->query($sql2);  
+//   if($res2->num_rows>0)
+//   {
+//     $count=1;
+//     while($row=$res2->fetch_assoc())
+//     {
 
-      echo $count++;
-      echo $row['SellerUserName'] ;
-      array_push($sellers, $row['SellerUserName']);
+//       echo $count++;
+//       echo $row['SellerUserName'] ;
+//       array_push($sellers, $row['SellerUserName']);
      
       
-      echo '\n';
+//       echo '\n';
   
-    }
-  }
-  // global $uniqueSeller;
-  print_r($sellers);
-   $uniqueSeller = array_unique($sellers);
-  echo "unique sellers";
-  print_r($uniqueSeller);
-  // print_r(array_unique($sellers));
-  $filteredArray = array_filter($uniqueSeller, 'strlen');
-  echo "filtered sellers";
-  print_r($filteredArray);
-  echo "length= ".count($uniqueSeller);
+//     }
+//   }
+//   // global $uniqueSeller;
+//   print_r($sellers);
+//    $uniqueSeller = array_unique($sellers);
+//   echo "unique sellers";
+//   print_r($uniqueSeller);
+//   // print_r(array_unique($sellers));
+//   $filteredArray = array_filter($uniqueSeller, 'strlen');
+//   echo "filtered sellers";
+//   print_r($filteredArray);
+//   echo "length= ".count($uniqueSeller);
  
  
-  // global $uniqueSeller; 
-  // for($i=0; $i < count($uniqueSeller); $i++)
-    // if($uniqueSeller[$i]==null)continue;
-    // echo '<div>'.$uniqueSeller[$i].'</div>';
-  // echo 54;
-}
+//   // global $uniqueSeller; 
+//   // for($i=0; $i < count($uniqueSeller); $i++)
+//     // if($uniqueSeller[$i]==null)continue;
+//     // echo '<div>'.$uniqueSeller[$i].'</div>';
+//   // echo 54;
+// }
 
 
 function test_input($data) {
@@ -113,7 +125,7 @@ function test_input($data) {
      $uniqueSeller = array_unique($sellers);
    
       foreach ($uniqueSeller as $x) {
-        echo "<div>$x</div>";
+        echo "<div class=$x>$x</div>";
       }
       
       ?>
@@ -126,7 +138,7 @@ function test_input($data) {
     $buyerUsername2=$_SESSION['BuyerUserName'] ;
     
     $sellers=[];
-    $sql2 = "SELECT sellerConvo,buyerConvo FROM chat where BuyerUserName='$buyerUsername2' and SellerUserName='y' ORDER by chatTime";
+    $sql2 = "SELECT sellerConvo,buyerConvo FROM chat where BuyerUserName='$buyerUsername2' and SellerUserName='$SellerUserName' ORDER by chatTime";
     
 
     $res2=$db->query($sql2);  
@@ -175,3 +187,4 @@ function test_input($data) {
   </div>
 </body>
 </html>
+<script src="BuyerChat.js"></script>
