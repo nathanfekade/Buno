@@ -104,7 +104,7 @@ class Login{
       
     }
 
-
+    echo "<script> alert('incorrect username or email') </script>";
 }
 
 }
