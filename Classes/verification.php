@@ -34,16 +34,18 @@ function insertDocuments($targetPath,$targetImagePath){
   global $db;
   global $SellerUserName;
   global $targetPath;
-  global $targetImagePath;
+  global $imageName;
 
   $SellerUserName2=$_SESSION['SellerUserName'];
 
 // check how it did find the location eventhough i am in verification.php not VerificationPage.verificationPage.php;
   echo "<script>Console.log('$SellerUserName');</script>" ;
-  $sql="INSERT INTO SellerVerification(SellerUserName,SellerDocuments,SellerDocumentImage) VALUES ('$SellerUserName2','$targetPath','$targetImagePath')";
+  $sql="INSERT INTO SellerVerification(SellerUserName,SellerDocuments,SellerDocumentImage) VALUES ('$SellerUserName2','$targetPath','$imageName')";
     
   if($db->query($sql)==true){
-    echo "File uploaded and saved to DB";
+    // echo "File uploaded and saved to DB";
+    header('Location: ../VerificationPage/ThankYou.php');
+    exit;
   }
   else{
     echo "Error:  $sql Error Details:  $Con->error";
