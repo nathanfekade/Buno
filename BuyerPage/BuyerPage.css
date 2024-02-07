@@ -6,59 +6,223 @@
 
 body {
   font-family: "Exo 2", sans-serif;
-  opacity: 1;
 }
-
-.wrapper{
+.navbar {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: black;
+  color: white;
+  transform: translateY(0px);
+  width: 100%;
+}
+.brand-title {
+  margin-top: 10px;
+  margin-left: 10px;
+  font-size: 30px;
+  font-weight: 700;
+}
+.navbar-links ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+.navbar-links li {
+  list-style: none;
+}
+.navbar-links li a {
+  text-decoration: none;
+  color: gray;
+  padding: 15px;
+  display: block;
+}
+/* .navbar-links li:hover {
+  background-color: whitesmoke;
+  transition: 0.5s;
+} */
+.toggle-button {
+  position: absolute;
+  top: 0.75rem;
+  right: 1rem;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+}
+#search {
+  outline: none;
+  background-color: white;
+  border: none;
+  border-radius: 5px;
+  height: 30px;
+  font-family: "Exo 2", sans-serif;
+  padding-left: 30px;
+  /* transform: translateY(-5px); */
+}
+#search-icon {
+  color:black;
+  transform: translate(24px, 6px);
+  font-size: 25px;
+
+}
+.toggle-button span {
+  color: white;
+}
+.toggle-button span a {
+  text-decoration: none;
+  color: white;
+}
+.select {
+  transform: translateY(20px);
+}
+.select select {
+  background-color: rgb(32, 32, 32);
+  color:white;
+  border: none;
+  padding:6px;
+  font-size: 15px;
+  font-family: inherit;
+}
+#logouts {
+  color:white;
+  transform: translateY(7px);
+}
+.wrapper {
+  display: grid;
   gap: 40px;
   padding: 50px;
-  background-color: #ebe8e9;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 0 auto;
+  background-color: whitesmoke;
+}
+.category {
+  padding: 20px;
+}
+.product-categorys {
+  display: none;
+}
+.change-pic {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.change-pic span {
+  display: none;
+  transition: 0.5s;
 }
 
-.product{
-  height: 300px;
-  width: 200px;
-  background-color: white;
-  box-shadow: 0px 2px 7px rgb(133, 133, 133); 
+.product {
+  height: 400px;
+  width: 300px;
   display: flex;
   flex-direction: column;
   padding-top: 10px;
+  background-color: white;
+  border-radius: 10px;
+  transition: 0.5s;
+  box-shadow: 0px 0px 15px rgb(189, 189, 189);
+  /* position: static; */
+  overflow: hidden;
 }
-
-.product:hover{
+.product:hover {
   cursor: pointer;
+  transform: translateY(-10px);
 }
-
-.product img{
-  width: 180px;
+.product:hover .change-pic span {
+  transition: 0.5s;
+  display: block;
+}
+.product a {
+  text-decoration: none;
+  color: black;
+}
+.product-categorys {
+  display: none;
+}
+.product img {
+  width: 220px;
   height: 300px;
   object-fit: cover;
+  aspect-ratio: 16 / 9;
   align-self: center;
+  border-radius: 5px;
+  margin-left: 5px;
 }
-
-.product .footer{
-  display: flex;
-  flex-direction: column;
-  padding: 8px;
-  gap: 2px;
+.hide {
+  display: none;
 }
-
-.product .footer .productName{
-  color: #244396;
+.product-detail {
+  margin-left: 20px;
 }
-
-.product .footer .priceAndRating{
+.productPrice {
+  margin-right: 15px;
+}
+.productRating {
+  font-size: 20px;
+}
+.productName {
+  font-weight: 700;
+  font-size: 1.5em;
+}
+.priceAndRating {
+  margin-top: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-weight: 500;
+  font-size: 1.2em;
 }
 
-.product .footer .priceAndRating .productPrice{
-  font-weight: 500;
+@media (max-width: 1006px) {
+  .wrapper {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
+@media (max-width: 682px) {
+  .wrapper {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .product {
+    margin:0px auto
+  }
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .toggle-button {
+    display: flex;
+  }
+  .navbar-links {
+    /* display: none; */
+    width: 100%;
+    transform: translateY(0px);
+    transition: 1s;
+  }
+  .navbar-links ul {
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+  }
+.navbar-links ul li #logout {
+  display: none;
+}
+  .navbar-links li {
+    text-align: center;
+  }
+  .navbar-links li a {
+    padding: 0.5rem 1rem;
+  }
+  .navbar-links.active {
+    display: flex;
+  }
+  .toggler {
+    /* transform: translateY(100vh); */
+    /* height: 100vh; */
+    height:100px;
 
-.product .footer .priceAndRating .productRating{
-  font-size: 13px;
+  }
+  .select select {
+    margin-bottom: 20px;
+  }
 }
