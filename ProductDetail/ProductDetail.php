@@ -20,6 +20,11 @@ $sqlRating = "INSERT INTO productrating (BuyerUserName,ProductId,ProductRating) 
 $resRating =  $db->query($sqlRating);
 }
 ?>
+<?php
+              
+             
+              
+              ?>    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,7 +49,9 @@ $resRating =  $db->query($sqlRating);
                 <span class="date"><?php echo $product->ProductDate;?></span>
                 <p class="description"><?php echo $product->ProductDescription;?>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit saepe atque, ratione quibusdam magni sunt ab excepturi, aspernatur explicabo quos illum distinctio laudantium. Rerum recusandae aspernatur beatae unde harum ut!</p>
-                <a href="../chat/BuyerChat.php?SellerUserName=<?php echo $_SESSION["SellerProductUserName"] =$product->SellerUserName;?>"><button class="btnContact">contact seller</button> </a>       
+                <a href="../chat/BuyerChat.php?SellerUserName=<?php echo $_SESSION["SellerProductUserName"] =$product->SellerUserName;?>"><button class="btnContact">contact seller</button> </a>  
+                <a href="../PaymentPage/PaymentPage.php"><button class="btnContact">purchase</button> </a>  
+                 
             </div>
             <div class="images">
                 <?php
