@@ -45,7 +45,7 @@
           <li><a href="#services">Services</a></li>
           <li><a href="#contact-us">Contact Us</a></li>
         </ul>
-        <a href="#" class="login-btn">Login</a>
+        <a href="../LoginPage/Login.php" class="login-btn">Login</a>
       </nav>
     </header>
 
@@ -149,7 +149,7 @@
                   rows="10"
                 ></textarea>
               </div>
-              <input type="submit" value="Send" class="send-btn" />
+              <input type="submit" value="Send" id="send-btn"class="send-btn" />
             </form>
           </div>
         </div>

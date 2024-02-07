@@ -2,8 +2,21 @@ const stars = document.querySelectorAll(".star");
 const reviewText = document.getElementById("review");
 const submitBtn = document.getElementById("submit");
 const reviewsContainer = document.getElementById("reviews");
+const ratingProgressBar = document.querySelectorAll(".done");
+const reviewForm = document.getElementById("reviewForm");
+
 let rating;
-console.log('23');
+
+ratingProgressBar.forEach((bar, index) => {
+    let ratingCountAll = document.getElementById("ratingCountAll").innerText.split(" ")[0];
+    let ratingCount;
+    let ratingCountRatio;
+    if(bar.id == index){
+        ratingCount = bar.innerText;
+        ratingCountRatio = ratingCount / ratingCountAll * 100;
+        bar.setAttribute("style",`width:${ratingCountRatio}%`);
+    }
+});
  
 stars.forEach((star) => {
     star.addEventListener("click", () => {

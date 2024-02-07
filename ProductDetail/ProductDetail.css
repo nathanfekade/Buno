@@ -1,3 +1,4 @@
+
 * {
   padding: 0;
   margin: 0;
@@ -9,7 +10,7 @@ body {
   opacity: 1;
 }
 
-.wrapper{
+.wrapper {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -17,16 +18,58 @@ body {
   padding-top: 30px;
 }
 
-.wrapper .main{
+.wrapper .main {
   display: flex;
   justify-content: space-evenly;
   gap: 20px;
   margin: 10px;
-  border: 1px solid red;
 }
 
-.wrapper .main .images{
-  border: 1px solid red;
+.productRating {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+.ratingInfo p {
+  font-size: 13px;
+  color: rgb(80, 80, 80);
+}
+
+.ratingProgress {
+  display: flex;
+  align-items: center;
+}
+
+.ratingProgress span {
+  margin: 0 5px;
+  width: 14px;
+}
+
+.progress-bar {
+  display: flex;
+  align-items: center;
+  width: 200px;
+  background-color: rgb(227, 227, 227);
+  gap: 10px;
+  height: 8px;
+  border-radius: 5px;
+}
+.progress-bar div {
+  height: 5px;
+}
+
+.progress-bar .done {
+  background-color: #000000;
+  font-size: 0px;
+  border-radius: 5px;
+  height: 8px;
+  /* border-radius: 10px; */
+}
+
+.wrapper .main .images {
   width: 450px;
   height: 450px;
   display: flex;
@@ -34,22 +77,150 @@ body {
   padding: 10px;
 }
 
-.wrapper .main .images img{
-  width: 130px;
-  height: 130px;
+.wrapper .main .images img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
+  aspect-ratio: 16 / 9;
+  border-radius: 10px;
 }
-
-.wrapper .main .productDetails{
-  border: 1px solid red;
+.buttons {
+  display: flex;
+  justify-content: space-between;
+}
+.buttons a {
+  text-decoration: none;
+}
+.btnContact,
+.btnPurchase {
+  background-color: black;
+  color: white;
+  border: none;
+  font-size: 1.2rem;
+  padding: 7px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: inherit;
+  margin-left: 10px;
+  transition: 500ms;
+  cursor: pointer;
+}
+.btnContact span {
+  font-size: 20px;
+}
+.btnContact-text {
+  transform: translateX(-100px);
+  transition: 1s;
+}
+#chat-logo {
+  transform: translateX(-40px);
+  transition: 1s;
+}
+.btnPurchase-text {
+  transform: translateX(-100px);
+  transition: 1s;
+}
+.btnContact:hover #chat-logo {
+  transform: translateX(0px);
+}
+.btnContact:hover .btnContact-text{
+  transform: translateX(0px);
+}
+#money-logo{
+  transform: translateX(-40px);
+  transition: 1s;
+}
+.btnPurchase:hover #money-logo {
+  transform: translateX(0px);
+}
+.btnPurchase:hover .btnPurchase-text {
+  /* transform: translateY(-5px);
+  box-shadow: 0px 2px 10px gray; */
+  transform: translateX(0px);
+}
+.btnPurchase {
+  gap: 4px;
+  margin-left: 0px;
+  margin-right: 10px;
+}
+.wrapper .main .productDetails {
   width: 450px;
   height: 450px;
+  border-radius: 10px;
+  box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  display: grid;
+  gap: 12px;
 }
 
-.wrapper .productReview{
-  border: 1px solid red;
-  margin: 10px;
-  padding: 10px;
+.wrapper .productReview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  margin: 0 auto;
+  width: 50%;
+  margin-top: 30px;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+}
+.productReview p {
+  font-weight: 700;
+  font-size: 1.4rem;
+}
+.review-submit,
+.review-submits {
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.review-submits {
+  gap: 5px;
+  margin-bottom: 15px;
+}
+.submit {
+  display: block;
+  background-color: black;
+  color: white;
+  border: none;
+  font-family: inherit;
+  width: 100px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  cursor: pointer;
+  border-radius: 10px;
+  font-size: 18px;
+}
+.submit-text {
+  transform: translateX(-100px);
+  transition: 1s;
+}
+.submit:hover #arrow-logo {
+  transform: translateX(0px);
+}
+.submit:hover .submit-text {
+  transform: translateX(0px);
+}
+#arrow-logo {
+transform: translateX(-40px);
+transition: 1s;
+}
+
+.review {
+  width: 400px;
+  height: 200px;
+  border: none;
+  border-radius: 10px;
+  background-color: whitesmoke;
+  padding: 15px;
+  resize: none;
 }
 
 .productReview .container {
@@ -58,32 +229,36 @@ body {
   text-align: center;
   width: 400px;
 }
- 
+
 .productReview .stars {
-    font-size: 30px;
+  font-size: 30px;
 }
- 
+
 .star {
-    cursor: pointer;
+  cursor: pointer;
 }
- 
-.one, .two, .three, .four, .five {
-    color: rgb(255, 255, 0);
+
+.one,
+.two,
+.three,
+.four,
+.five {
+  color: orange;
 }
- 
-.wrapper .commentSection{
+
+.wrapper .commentSection {
   border: solid red 1px;
   margin: 10px;
   padding: 10px;
 }
 
-.commentSection .productComment{
+.commentSection .productComment {
   border: solid red 1px;
   margin: 15px;
   border-radius: 10px;
 }
 
-.productComment .commentInfo{
+.productComment .commentInfo {
   display: flex;
   align-items: center;
   border-radius: 10px;
@@ -99,13 +274,13 @@ body {
   padding: 1px;
 }
 
-.commentInfo .date{
+.commentInfo .date {
   font-size: 13px;
   color: rgb(27, 27, 27);
 }
 
-.productComment .comment{
-  margin: 2px; 
+.productComment .comment {
+  margin: 2px;
   margin-left: 40px;
   padding: 4px;
   font-size: 18px;

@@ -103,7 +103,7 @@ header span.material-symbols-outlined {
   flex-direction: column;
   justify-content: start;
   align-items: start;
-  gap: 1rem;
+  /* gap: 1rem; */
   background-color: var(--primary-color);
   color: #fff;
 
