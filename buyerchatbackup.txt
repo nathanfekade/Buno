@@ -1,0 +1,585 @@
+<?php
+// if ($_SERVER["REQUEST_METHOD"] == "POST") {
+//     $className = $_POST['className'];
+//     // Now you can use the $className variable in your PHP script
+// echo $className;
+//   }
+?>
+<?php
+session_start();
+include('../Classes/Connect.php');
+
+$Con=new Connect;
+$db=$Con->getConnection();
+
+// if (isset($_GET["SellerUserName"])) {
+//   $Seller = $_GET["SellerUserName"];
+//   echo $SellerUserName;
+
+// }
+$SellerUserName2=$_SESSION["SellerProductUserName"];
+echo $SellerUserName2;
+
+if (isset($_POST["chatValue"])) {
+  // &&isset($_POST["Login"])
+//  echo $_POST["UserNameOrEmail"];
+  $chatValue = test_input($_POST["chatValue"]);
+
+    // echo "chat= $chatValue";
+function send(){
+  global $db;
+  global $chatValue;
+
+  global $SellerUserName;
+  $textInsertTime = getdate();
+  $buyerUsername=$_SESSION['BuyerUserName'] ;
+  echo "buyer username= $buyerUsername || ";
+  $sql = "INSERT INTO chat ( SellerUserName, BuyerUserName, buyerConvo, sellerConvo,chatTime) VALUES ('$SellerUserName2','$buyerUsername' , '$chatValue', NULL,'$textInsertTime[0]')";
+
+
+$res =  $db->query($sql);
+}
+send();
+   
+
+  
+}
+
+
+
+function test_input($data) {
+  $data = trim($data);
+  $data = stripslashes($data);//check what it does
+  $data = htmlspecialchars($data);
+  return $data;
+}
+
+
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="BuyerChat.css" />
+ 
+  <title>BuyerChat</title>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="chatList">1
+    <?php
+    
+    $buyerUsername2=$_SESSION['BuyerUserName'] ;
+    
+    $sellers=[];
+    $sql2 = "SELECT SellerUserName FROM chat where BuyerUserName='$buyerUsername2'";
+    
+    $res2=$db->query($sql2);  
+    if($res2->num_rows>0)
+    {
+          $count=1;
+          while($row=$res2->fetch_assoc())
+          {
+      
+            array_push($sellers, $row['SellerUserName']);
+        
+          }
+    }
+        
+    $uniqueSeller = array_unique($sellers);
+    foreach ($uniqueSeller as $x) {
+      echo "<div class=$x>$x</div>";
+    
+      // echo "<script>let chatInstance = document.querySelector(".$x");</script>";
+    }
+   
+      ?>
+    </div>
+    
+    <div class="chatInstance">
+    
+    <?php
+    
+    $buyerUsername2=$_SESSION['BuyerUserName'] ;
+    
+    $sellers=[];
+    $sql2 = "SELECT sellerConvo,buyerConvo FROM chat where BuyerUserName='$buyerUsername2' and SellerUserName='$SellerUserName2' ORDER by chatTime";
+    
+
+    $res2=$db->query($sql2);  
+    if($res2->num_rows>0)
+    {
+//       $dateInfo = getdate();
+// print_r($dateInfo);
+// $dateInfo2 = getdate();
+// print_r($dateInfo2);
+// $resu=$dateInfo[0]<$dateInfo2[0];
+// echo  $resu;
+      while($row=$res2->fetch_assoc())
+      {
+        if($row['sellerConvo']!=null){
+          echo "seller: ".$row['sellerConvo'];
+          echo "<br>";
+        }
+        if($row['buyerConvo']!=null){
+          echo "buyer: ". $row['buyerConvo'];
+        echo "<br>";
+
+        }
+        
+        // array_push($sellers, $row['buyerConvo']);
+    
+      }
+    }
+    
+   
+      // foreach ($sellers as $x) {
+      //   echo "<div>$x</div>";
+      // }
+     
+      ?>
+
+      <div class="textInput">
+        <form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>">
+       
+        <div class="input-box">
+            <input type="text" name="chatValue" id="chatValue" required placeholder="insert text"> 
+          </div>
+          <input type="submit" value="send" name="send"class="send-btn"> <br>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+<script src="BuyerChat.js">
+</script>
+
+
+
+<!-- <script>
+
+let elements = document.getElementsByClassName('chatList');
+let listOfChats = document.getElementsByClassName('chatInstance');
+let myFunction = function(className) {
+  
+  alert(className);
+  for(let i = 0; i <listOfChats.length; i++) {
+    listOfChats[i].innerHTML = '';
+    // console.log(listOfChats[i]);
+  }
+  
+
+};
+
+for (let i = 0; i < elements.length; i++) {
+  let children = elements[i].children;
+  
+  for (let j = 0; j < children.length; j++) {
+    let childClassName = children[j].className;
+    
+    children[j].addEventListener('click', (function(c) {
+      return function() {
+        myFunction(c);
+      };
+    })(childClassName));
+  }
+}
+
+</script> -->
+
+
+<!-- <script>
+
+let elements = document.getElementsByClassName('chatList');
+
+let myFunction = function(className) {
+  alert(className);
+};
+
+for (let i = 0; i < elements.length; i++) {
+  let children = elements[i].children;
+  for (let j = 0; j < children.length; j++) {
+    let childClassName = children[j].className;
+    children[j].addEventListener('click', (function(c) {
+      return function() {
+        myFunction(c);
+      };
+    })(childClassName));
+  }
+}
+
+</script> -->
+
+
+
+
+
+---------------------
+<?php
+   
+session_start();
+include('../Classes/Connect.php');
+
+$Con=new Connect;
+$db=$Con->getConnection();
+
+$buyerUser=$_SESSION['BuyerUserName'] ;
+
+$sellerUser=$_SESSION["SellerProductUserName"];
+
+function listTexts($sellerUser,$buyerUser){
+
+  global $db;
+  $sql2 = "SELECT sellerConvo,buyerConvo FROM chat where BuyerUserName='$buyerUser' and SellerUserName='$sellerUser' ORDER by chatTime";
+  $res2=$db->query($sql2);  
+  if($res2->num_rows>0)
+  {
+
+    while($row=$res2->fetch_assoc())
+    {
+      echo "<br>";
+      if($row['sellerConvo']!=null){
+        // echo "<div class='sellerChat'>seller:  $row['sellerConvo']</div>";
+        echo "<div class='sellerChat'>seller: ".$row['sellerConvo']."</div>";
+
+
+        // echo "seller:  ".$row['sellerConvo'];
+        echo "<br>";
+      }
+      if($row['buyerConvo']!=null){
+        // echo "<div class='buyerChat'>buyer:  $row['buyerConvo']</div>";
+        echo "<div class='buyerChat'>buyer: ".$row['buyerConvo']."</div>";
+
+        // echo "buyer: ". $row['buyerConvo'];
+      echo "<br>";
+      }
+    }
+  }
+}
+
+function send($chatValue){
+  global $db;
+  global $chatValue;
+  global $buyerUser;
+  global $sellerUser;
+  $textInsertTime = getdate();
+  // echo "buyer username= $buyerUsername || ";
+  $sql = "INSERT INTO chat ( SellerUserName, BuyerUserName, buyerConvo, sellerConvo,chatTime) VALUES ('$sellerUser','$buyerUser' , '$chatValue', NULL,'$textInsertTime[0]')";
+
+  
+$res =  $db->query($sql);
+
+// listTexts($sellerUser,$buyerUser);
+}
+// echo $SellerUserName2;
+
+echo 'sel: '.$sellerUser;
+    echo "<br>";
+    echo 'buy: '.$buyerUser;
+    echo "<br>";
+
+// if ($_SERVER["REQUEST_METHOD"] == "POST") {
+//   if (isset($_POST['submitUserName'])) {
+//     $sellerUser = $_POST['value'];
+//     $buyerUser=$_SESSION['BuyerUserName'] ;
+//     echo 'inside post sel: '.$sellerUser;
+//     echo "<br>";
+//     echo 'inside post buy: '.$buyerUser;
+//     // listTexts($sellerUser,$buyerUser);
+//     // $sql2 = "SELECT sellerConvo,buyerConvo FROM chat where BuyerUserName='$buyerUser' and SellerUserName='$sellerUser' ORDER by chatTime";
+    
+
+//     // $res2=$db->query($sql2);  
+//     // if($res2->num_rows>0)
+//     // {
+
+//     //   while($row=$res2->fetch_assoc())
+//     //   {
+//     //     echo "<br>";
+//     //     if($row['sellerConvo']!=null){
+//     //       echo "seller: ".$row['sellerConvo'];
+//     //       echo "<br>";
+//     //     }
+//     //     if($row['buyerConvo']!=null){
+//     //       echo "buyer: ". $row['buyerConvo'];
+//     //     echo "<br>";
+//     //     }
+//     //   }
+//     // }
+//   }
+// }
+
+
+
+
+
+
+
+
+function test_input($data) {
+  $data = trim($data);
+  $data = stripslashes($data);//check what it does
+  $data = htmlspecialchars($data);
+  return $data;
+}
+
+
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="BuyerChat.css" />
+ 
+  <title>BuyerChat</title>
+  
+</head>
+<body>
+  
+  <div class="wrapper">
+    <div class="chatList">
+     
+    <?php
+    
+    
+    $sellers=[];
+    $sql2 = "SELECT SellerUserName FROM chat where BuyerUserName='$buyerUser'";
+    
+    $res2=$db->query($sql2);  
+    if($res2->num_rows>0)
+    {
+          $count=1;
+          while($row=$res2->fetch_assoc())
+          {
+      
+            array_push($sellers, $row['SellerUserName']);
+        
+          }
+    }
+        
+    $uniqueSeller = array_unique($sellers);
+    foreach ($uniqueSeller as $x) {
+      // echo "<div class=$x>$x</div>";
+      echo " <div class='chatListElement' id='$x'>
+      <form action='' method='post'>
+        <input type='hidden' name='value' id='hiddenValue' value='$x'>
+        <button id='submit' type='submit' name='submitUserName' class='$x'>$x</button>
+      </form>
+    </div>";
+      // echo "<script>let chatInstance = document.querySelector(".$x");</script>";
+    }
+   
+      ?>
+    </div>
+    
+    <div class="chatInstance">
+    
+    <?php
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+      if (isset($_POST['submitUserName'])) {
+       
+        $sellerUser = $_POST['value'];
+        
+        $buyerUser=$_SESSION['BuyerUserName'] ;
+       
+       listTexts($sellerUser,$buyerUser);
+       
+      }
+    }else{
+    listTexts($sellerUser,$buyerUser);
+
+    }
+    if (isset($_POST["chatValue"])) {
+
+
+      $chatValue = test_input($_POST["chatValue"]);
+    
+        // echo "chat= $chatValue";
+    
+      send($chatValue);
+      header("Refresh:0");
+
+    }
+    
+    
+
+    // function listTexts($sellerUser,$buyerUser){
+
+    //   global $db;
+    //   $sql2 = "SELECT sellerConvo,buyerConvo FROM chat where BuyerUserName='$buyerUser' and SellerUserName='$sellerUser' ORDER by chatTime";
+    //   $res2=$db->query($sql2);  
+    //   if($res2->num_rows>0)
+    //   {
+  
+    //     while($row=$res2->fetch_assoc())
+    //     {
+    //       echo "<br>";
+    //       if($row['sellerConvo']!=null){
+    //         // echo "<div class='sellerChat'>seller:  $row['sellerConvo']</div>";
+    //         echo "<div class='sellerChat'>seller: ".$row['sellerConvo']."</div>";
+
+
+    //         // echo "seller:  ".$row['sellerConvo'];
+    //         echo "<br>";
+    //       }
+    //       if($row['buyerConvo']!=null){
+    //         // echo "<div class='buyerChat'>buyer:  $row['buyerConvo']</div>";
+    //         echo "<div class='buyerChat'>buyer: ".$row['buyerConvo']."</div>";
+
+    //         // echo "buyer: ". $row['buyerConvo'];
+    //       echo "<br>";
+    //       }
+    //     }
+    //   }
+    // }
+    // $buyerUsername2=$_SESSION['BuyerUserName'] ;
+    
+    // $sellers=[];
+    // $sql2 = "SELECT sellerConvo,buyerConvo FROM chat where BuyerUserName='$buyerUsername2' and SellerUserName='$SellerUserName2' ORDER by chatTime";
+    
+
+    // $res2=$db->query($sql2);  
+    // if($res2->num_rows>0)
+    // {
+
+    //   while($row=$res2->fetch_assoc())
+    //   {
+    //     if($row['sellerConvo']!=null){
+    //       echo "seller: ".$row['sellerConvo'];
+    //       echo "<br>";
+    //     }
+    //     if($row['buyerConvo']!=null){
+    //       echo "buyer: ". $row['buyerConvo'];
+    //     echo "<br>";
+
+    //     }
+        
+    //     // array_push($sellers, $row['buyerConvo']);
+    
+    //   }
+    // }
+    
+   
+      // foreach ($sellers as $x) {
+      //   echo "<div>$x</div>";
+      // }
+     
+      ?>
+      <div class="textInput">
+        <form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>">
+       
+        <div class="input-box">
+            <input type="text" name="chatValue" id="chatValue" required placeholder="insert text"> 
+          </div>
+          <input type="submit" value="send" name="send"class="send-btn"> <br>
+          <input type="hidden" name="classNameInput" id="classNameInput" value="">
+        </form>
+      </div>
+    </div>
+  </div>
+
+</body>
+<script > 
+
+
+
+let chatListElements = document.querySelectorAll('.chatListElement');
+let listOfChats = document.querySelector('.chatInstance');
+
+
+chatListElements.forEach((c)=>{
+  
+  c.addEventListener('click',()=>{
+    document.getElementById("hiddenValue").value = c.id;
+    alert(document.getElementById("hiddenValue").value);
+    listOfChats.innerHTML='';
+  })
+})
+
+
+// chatListElements.addEventListener('click',()=>{
+//   for (let i = 0; i < chatListElements.length; i++) {
+//     for(let i = 0; i <listOfChats.length; i++) {
+//       listOfChats[i].innerHTML = '';
+//     }
+//   }
+// })
+//   let elements = document.getElementsByClassName('chatList');
+//   console.log(elements);
+// let listOfChats = document.getElementsByClassName('chatInstance');
+// let myFunction = function() {
+  
+  
+//   for(let i = 0; i < listOfChats.length; i++) {
+//     listOfChats[i].innerHTML = '';
+//     // console.log(listOfChats[i]);
+//   }
+ 
+
+// };
+
+// for (let i = 0; i < elements.length; i++) {
+//   let children = elements[i].children;
+
+//   for (let j = 0; j < children.length; j++) {
+//     let childClassName = children[j].className;
+
+//     children[j].addEventListener('click', );
+//   }
+// }
+
+</script>
+</html>
+
+
+<?php
+
+// if ($_SERVER["REQUEST_METHOD"] == "POST") {
+//   if (isset($_POST['submitUserName'])) {
+//     // echo"<script>let chatListElements = document.querySelectorAll('.chatListElement');
+//     // let listOfChats = document.querySelector('.chatInstance');
+    
+    
+//     // chatListElements.forEach((c)=>{
+      
+//     //   c.addEventListener('click',()=>{
+//     //     document.getElementById('hiddenValue').value = c.id;
+//     //     alert(document.getElementById('hiddenValue').value);
+//     //     listOfChats.innerHTML='';
+//     //   })
+//     // })</script>";
+//     $sellerUser = $_POST['value'];
+//     echo'value: '.$_POST['value'];
+//     $buyerUser=$_SESSION['BuyerUserName'] ;
+//     echo 'inside post sel: '.$sellerUser;
+//     echo "<br>";
+//     echo 'inside post buy: '.$buyerUser;
+//     // listTexts($sellerUser,$buyerUser);
+//     // $sql2 = "SELECT sellerConvo,buyerConvo FROM chat where BuyerUserName='$buyerUser' and SellerUserName='$sellerUser' ORDER by chatTime";
+    
+
+//     // $res2=$db->query($sql2);  
+//     // if($res2->num_rows>0)
+//     // {
+
+//     //   while($row=$res2->fetch_assoc())
+//     //   {
+//     //     echo "<br>";
+//     //     if($row['sellerConvo']!=null){
+//     //       echo "seller: ".$row['sellerConvo'];
+//     //       echo "<br>";
+//     //     }
+//     //     if($row['buyerConvo']!=null){
+//     //       echo "buyer: ". $row['buyerConvo'];
+//     //     echo "<br>";
+//     //     }
+//     //   }
+//     // }
+//   }
+// }
+
+?>
