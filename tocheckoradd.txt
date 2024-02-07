@@ -2,6 +2,8 @@ TO CHECK
 
 ask perplexity  or other AI for improvements like security
 
+to check the texts that are written
+
 !!! create logout
 
 reload page comment
