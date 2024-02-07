@@ -88,7 +88,7 @@ function test_input($data) {
             <input type="submit" value="Insert" name="Insert"class="Insert-btn"> <br>
 
             </form>
-
+              <a href="../chat/SellerChat.php">chat</a>
             </div>
 </body>
 </html>

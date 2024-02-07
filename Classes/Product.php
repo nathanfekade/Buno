@@ -78,9 +78,7 @@ class Product{
 
       //  echo " username match";
 
-        // redirect to home page
-        header('Location: ../HomePage/HomePage.php');
-        exit;
+       
     } else {
       echo "<script> alert('Failed to insert data. Error: " . $db->error . "')</script>";
     }

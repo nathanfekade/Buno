@@ -170,7 +170,8 @@ $check=$this->userNameAvailable();
          $_SESSION["BuyerUserName"] =$BuyerUserName ;
 
         echo  $_SESSION["BuyerUserName"]  ;
-
+        header('Location: ../BuyerPage/BuyerPage.php');
+        exit;
         // redirect to home page
         // header('Location: ../HomePage/HomePage.php');
         // exit;
