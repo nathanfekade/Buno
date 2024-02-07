@@ -1,0 +1,23 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Exo 2", sans-serif;
+  opacity: 1;
+}
+
+.user-request{
+  border: 1px solid red;
+  justify-content: space-around;
+}
+
+.user-request img{
+  border: 1px solid red;
+  width: 180px;
+  height: 200px;
+  object-fit: cover;
+  align-self: center;
+}
