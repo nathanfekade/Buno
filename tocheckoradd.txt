@@ -6,6 +6,16 @@ ask perplexity  or other AI for improvements like security
 
 reload page comment
 
+profile page
+
+only allow image when accessing file
+
+logout
+
+update ,delete
+
+added image of the user or buyer on the top right side
+
 !!!!! seller must not directly go to sellerpage we must first check if its verified when they login
 
 !!! must do admin page
