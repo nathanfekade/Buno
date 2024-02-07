@@ -52,7 +52,23 @@ class Product{
 
 
 
+public function count_product_rating_all($ProductId){
+  global $db;
+  $count=0;
+  $sql = "SELECT ProductRating FROM `productrating` WHERE ProductId = ".$ProductId;
+  if($res = $db->query($sql))
+      while($row = $res->fetch_assoc()) $count++;
+  return $count;
+}
 
+public function count_product_rating($ProductId, $rating){
+  global $db;
+  $count=0;
+  $sql = "SELECT ProductRating FROM `productrating` WHERE ProductId = ".$ProductId." AND ProductRating = ".$rating;
+  if($res = $db->query($sql))
+      while($row = $res->fetch_assoc()) $count++;
+  return $count;
+}
 
   public function addProduct($ProductName,
   $ProductCategory,$ProductImageFileName, $ProductBasePrice,
