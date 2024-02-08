@@ -76,13 +76,7 @@ public function count_product_rating($ProductId, $rating){
 
     global $db;
   
-      echo "$ProductName name constructor <br>";
-   echo "$ProductCategory categ constructor <br>";
-   echo "$ProductImageFileName image constructor <br>";
-   echo "$ProductBasePrice Base constructor <br>"; 
-   echo "$ProductDescription descri constructor <br>";
-      
-  // i think i should insert the image separately or using another mechanism
+     
     $SellerUserName=$_SESSION["SellerUserName"];
  $date= date("Y-m-d H:i:s");
     $sql = "INSERT INTO product (ProductName,ProductCategory,ProductImageFileName,ProductDate,ProductBasePrice,ProductDescription,SellerUserName) VALUES ('$ProductName','$ProductCategory','$ProductImageFileName',NOW(),'$ProductBasePrice','$ProductDescription','$SellerUserName')";
