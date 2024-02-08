@@ -121,7 +121,7 @@ header span.material-symbols-outlined {
 }
 
 .hero__heading {
-  font-size: 5.5rem;
+  font-size: 4.95rem;
   width: 100%;
   outline: none;
   font-weight: 800;
@@ -187,7 +187,7 @@ header span.material-symbols-outlined {
 
 .services {
   margin-top: 2rem;
-  background-image: url(/assets/Services.jpg);
+  background-image: url(assets/Services.jpg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100% 100%;
@@ -380,7 +380,7 @@ form p {
 }
 
 .footer {
-  margin-top: 20rem;
+  margin-top: 22rem;
   height: 30vh;
   background-color: black;
 }
