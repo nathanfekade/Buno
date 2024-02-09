@@ -4,6 +4,12 @@
   box-sizing: border-box;
 }
 
+body {
+  font-family: "Exo 2", sans-serif;
+  opacity: 1;
+}
+
+
 .wrapper{
   display: flex;
   height: 100vh;
@@ -11,11 +17,89 @@
 }
 
 .chatList{
-  border: 1px solid red;
+  border: 1px solid black;
   flex: 1;
 }
 
+.chatListElement form #submit{
+  width: 100%;
+  font-size: 20px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+}
+
 .chatInstance{
-  border: 1px solid red;
-  flex: 4;
+  flex: 5;
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
+}
+
+.header{
+  flex:1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 20px;
+  background-color: black;
+  color: white; 
+}
+
+.header .receiverInfo{
+  display: flex;
+  align-items: center;
+}
+
+.chatBox{
+  flex: 10;
+}
+
+.chatBox div{
+  padding: 7px 0;
+  margin: 10px;
+}
+
+.chatBox .receiverChat{
+  text-align: left;
+}
+
+.receiverChat span{
+  background-color: lightgray;
+  border-radius: 10px;
+  padding: 5px 15px;
+  border-bottom-left-radius: 0px;
+}
+
+.chatBox .senderChat{
+  text-align: right;
+}
+
+.senderChat span{
+  background-color: #fe5100;
+  color: white;
+  border-radius: 10px;
+  padding: 5px 15px;
+  border-bottom-right-radius: 0px;
+}
+
+.textInput form{ 
+  flex: 1;
+  display: flex;
+  justify-content: space-around;
+  margin: 10px;
+}
+
+#chatValue{
+  width: 900px;
+  font-size: 20px;
+  border-radius:  10px;
+  padding: 5px 15px;
+}
+
+.textInput form .send-btn{
+  width: 200px;
+  font-size: 20px;
+  border-radius: 10px;
+  padding: 5px 15px;
 }
