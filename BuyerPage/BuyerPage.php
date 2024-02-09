@@ -59,7 +59,7 @@ $db = $Con->getConnection();
 
           </select>
         </li>
-        <li><a href="#"><span id="logouts" class="material-symbols-outlined">
+        <li><a href="../logout.php"><span id="logouts" class="material-symbols-outlined">
               logout
             </span></a></li>
       </ul>
