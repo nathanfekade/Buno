@@ -74,7 +74,7 @@
             are legitimate, trustworthy, and committed to delivering exceptional
             products and services to our valued buyers.
           </p>
-          <a href="#" class="learn-more-btn">Learn more</a>
+          <a href="about/about.html" class="learn-more-btn">Learn more</a>
         </div>
       </div>
     </section>
