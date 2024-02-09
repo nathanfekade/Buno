@@ -5,47 +5,110 @@
 }
 
 header{
-  margin-bottom: 5%;
-}
-.header__nav{
-  display:flex;
-  justify-content: space-between;
   border: 1px solid transparent;
-  background-color:black;
-  /* height: fit-content; */
+  height: fit-content;
+  background-color: black;
 }
-.header__logo{
-  flex:1;
-  font-size:30px;
-  font-family: 'Montserat', sans-serif;
-  padding:15px;
-  color: #fff;
-  /* font-weight: bold; */
-  text-decoration: none;
+.buno_logo{
+  display: flex;
+  margin-left: 2rem;
 }
-.header__nav h4{
-  padding:15px;
-  font-family: 'Exo 2', sans-serif;
-  font-size:21px;
-  color: #fff;
-  font-weight: 200; 
-  opacity: 0.9;
+.buno_logo img{
+  object-fit: contain;
+  object-position: center;
+  height: 48px;
+  width:48px;
+ 
 }
+ .header__logo{
+   font-size:30px;
+   font-family: 'Montserat', sans-serif;
+   color: #fff;
+   text-decoration: none;
+ }
 
 body {
   font-family: "Exo 2", sans-serif;
   opacity: 1;
 }
 
+.main{
+  display: flex;
+  padding: 20px;
+    flex-wrap: wrap;
+    gap:100px;
+    margin:0 auto;
+    justify-content: space-evenly;
+}
+.title h2 {
+  padding-left: 1rem;
+  padding-top: .25rem;
+}
 .user-request{
-  border: 1px solid red;
-  justify-content: space-around;
+background-color: white;
+box-shadow: 0px 0px 7px rgba(0,0,0,0.4);
+border-radius: 10px;
+  padding: 20px;
+  gap: 20px;
+  display: flex;
 }
 
 .user-request img{
-  border: 1px solid red;
+  border: 1px solid #bbb;
+  
   width: 180px;
   height: 200px;
   object-fit: cover;
   align-self: center;
+}
+
+.user-request .user-info{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap:5px;
+}
+.btn-view-document {
+  background-color: black;
+  color: white;
+  border: 1px solid transparent;
+  padding-block: 6px;
+}
+
+.btn-view-document div{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn-view-document a {
+  color:white;
+  text-decoration: none;
+
+}
+.btn-view-document span {
+  color:white;
+}
+.btn-flex {
+  display: flex;
+  justify-content: space-evenly;
+  gap:10px;
+}
+.btn-flex button {
+  color: white;
+  border: 1px solid transparent;
+  font-size: 1rem;
+  padding-inline: 15px;
+  padding-block: 6px;
+  border-radius: 10px;
+  font-family: inherit;
+  text-transform: capitalize;
+box-shadow: 0px 0px 3px rgba(0,0,0,0.4);
+}
+
+.btn-approve{
+  background-color: green;
+}
+
+.btn-deny{
+  background-color: red;
 }

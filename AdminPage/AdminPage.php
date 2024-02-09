@@ -31,11 +31,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body>
     <header>
-        <nav class="header__nav">
-            <a class="header__logo" href="">BUNO</a>
-            <h4>Welcome Back!</h4>
-        </nav>
-    </header>
+    <nav class="buno_logo">
+      <img src="buno.png" alt="logo">
+      <a href="#" class="header__logo">BUNO</a>
+    </nav>
+    </header>     
     <div class="wrapper">
         <div class="title">
             <h2>User Requests</h2>
@@ -51,21 +51,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     ?>
                     <div class="user-request">
                     <img src='../VerificationPage/<?php echo $row["SellerDocumentImage"];?>' alt="" width="100px"/>
-                    <span class="username"><?php echo $row["SellerUserName"];?></span>
-                    <button class="btn-view-document" name="viewDocument"><a href="../AdminPage/DocumentViewer.php?imageFileName=../VerificationPage/<?php echo $row['SellerDocuments'];?>">view document</a></button>
-                    <div class="buttons">
+                    <div class="user-info">
+                        <button class="btn-view-document" name="viewDocument"><a href="../AdminPage/DocumentViewer.php?imageFileName=../VerificationPage/<?php echo $row['SellerDocuments'];?>"><div><span class="material-symbols-outlined">open_in_new</span>view document</div></a></button>
+                        <?php
+                        $sql = "SELECT * FROM `seller` WHERE SellerUserName = '".$row["SellerUserName"]."'";
+                        $result=$db->query($sql);
+                        $row = $result->fetch_assoc();
+                        ?>
+                        <span class="seller-name">Name: <?php echo $row["SellerFirstName"]." ".$row["SellerLastName"];?></span>
+                        <span class="seller-email">Email: <?php echo $row["SellerEmail"];?></span>
+                        <span class="seller-phone">Phone Number: <?php echo $row["SellerPhoneNo"];?></span>
+                        <span class="seller-username">UserName: <?php echo $row["SellerUserName"];?></span>
+                        <div class="buttons">
                         <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post">
                             <input type="hidden" name="value" value="<?php echo $row['SellerUserName']; ?>">
+                            <div class="btn-flex">
                             <button class="btn-approve" name="approve">approve</button>
                             <button class="btn-deny" name="deny">deny</button>
+                            </div>
                         </form>
+                    </div>
                     </div>
                 </div>
                 <?php 
                 }}}?>
-            </div>
+            </div>   
         </div>
     </div>
     <footer></footer>
 </body>
 </html>
+<script src="AdminPage.js"></script>
