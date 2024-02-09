@@ -10,6 +10,8 @@ let overlay=document.getElementById("overlay");
 let search = document.getElementById("search");
 let table = document.querySelector('table');
 let nameTr = table.querySelectorAll('tbody td[data-title="Name"]');
+let addProductBtn=document.getElementById("add-product");
+
 let nameProducts=[];
 nameProducts=Array.from(tableRows).map ((names) => {
   return {name:names.textContent, element:names} 
@@ -31,6 +33,11 @@ closeSpan.addEventListener("click", () => {
     overlay.classList.remove("removes");
 
 });
+addProductBtn.addEventListener("click", () => {
+  popup.classList.add("open-popup");
+  console.log(11);
+  overlay.classList.add("removes");
+})
 
 let priceTr = table.querySelectorAll('tbody td[data-title="Price"]');
 let ageDataArray = [];
@@ -88,3 +95,10 @@ tableRows.forEach((tableRow) => {
     })
   });
 });
+
+let productImg = document.getElementById("product-img");
+let inputFile=document.getElementById("ProductImageFileName");
+
+inputFile.onchange= () => {
+    productImg.src=URL.createObjectURL(inputFile.files[0]);
+}

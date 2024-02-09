@@ -46,10 +46,6 @@ h2 {
   font-size: 20px;
   /* border-color: red; */
 }
-.sign-up div span:last-child {
-  color: red;
-  display: none;
-}
 .sign-up-btn {
   background-color: #244396;
   color: white;
@@ -75,7 +71,10 @@ h2 {
   flex-direction: row;
   align-items: center;
 }
-
+#eye {
+  color: red;
+  transform: translateX(-19px);
+}
 @media (max-width: 470px) {
   .sign-up {
     width: 100%;

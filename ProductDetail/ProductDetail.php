@@ -4,7 +4,7 @@ include('../Classes/Product.php');
 $Con = new Connect;
 $db = $Con->getConnection();
 $BuyerUserName = $_SESSION["BuyerUserName"];
-
+// echo $BuyerUserName; 
 $product = new Product();
 $product->set_product($_GET["ProductId"]);
 ?>
@@ -33,8 +33,7 @@ $product->set_product($_GET["ProductId"]);
                 <h2 class="productName"><?php echo $product->ProductName; ?></h2>
                 <h2 class="productPrice"><?php echo $product->ProductBasePrice; ?>Br.</h2>
                 <!-- <span class="date"><?php echo $product->ProductDate; ?></span> -->
-                <p class="description"><?php echo $product->ProductDescription; ?>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit saepe atque, ratione quibusdam magni sunt ab excepturi, aspernatur explicabo quos illum distinctio laudantium. Rerum recusandae aspernatur beatae unde harum ut!</p>
+                <p class="description"><?php echo $product->ProductDescription; ?> </p>
                 <div class="productRating">
                     <div class="ratingInfo">
                         <h1><?php echo $product->calc_product_rating($product->ProductId); ?>⭐</h1>
@@ -78,10 +77,10 @@ $product->set_product($_GET["ProductId"]);
                             </span></button>
                     </a>
                     <a href="../PaymentPage/PaymentPage.php">
-                    <button class="btnPurchase" id="btnPurchase"><span class="btnPurchase-text">Purchase</span> <span class="material-symbols-outlined" id="money-logo">
-                            attach_money
-                        </span></button> </a>
-                    
+                        <button class="btnPurchase" id="btnPurchase"><span class="btnPurchase-text">Purchase</span> <span class="material-symbols-outlined" id="money-logo">
+                                attach_money
+                            </span></button> </a>
+
                 </div>
 
             </div>
@@ -120,12 +119,12 @@ $product->set_product($_GET["ProductId"]);
             $sql = "SELECT * FROM productcomment WHERE ProductId = " . $product->ProductId;
             if ($res = $db->query($sql)) {
                 while ($row = $res->fetch_assoc()) {
-                    $BuyerUserName = $row['BuyerUserName'] ?><div class="productComment">
+                    $BuyerUserName2 = $row['BuyerUserName'] ?><div class="productComment">
                         <div class="commentInfo">
-                            <div class="reviewedBy">
-                                <span class="material-symbols-outlined">account_circle</span>
-                                <p><?php echo "$BuyerUserName"; ?></p>
-                            </div>
+
+                            <span class="material-symbols-outlined">account_circle</span>
+                            <p><?php echo "$BuyerUserName2"; ?></p>
+
                             <p class="date"><?php echo substr($row["AddedOnDate"], 0, 10); ?></p>
                         </div>
                         <p class="comment"><?php echo $row["ProductComment"]; ?></p>
@@ -141,6 +140,54 @@ $product->set_product($_GET["ProductId"]);
 
 </html>
 <script src="ProductDetail.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+<script>
+    // const dates = document.querySelectorAll(".date");
+    // dates.forEach((date) => {
+        // function formatDateRelativeToNow(dates) {
+            // Parse the input date using moment.js
+            // const dat = moment(dates);
+
+            // Get the current date
+            // const currentDate = moment();
+
+            // Calculate the difference in months
+            // const daysDiff = currentDate.diff(dat, 'days');
+            // const monthDiff = currentDate.diff(dat, 'months');
+            // const weekDiff = currentDate.diff(dat, 'weeks');
+            // const hoursDiff = currentDate.diff(dat, 'hours');
+            // const minutesDiff = currentDate.diff(dat, 'minutes');
+            // const secondDiff = currentDate.diff(dat, 'seconds')
+            // const yearDiff = currentDate.diff(dat, "years");
+
+            // Construct the relative time string
+            // const relativeTime = daysDiff === 1 ? '1 day ago' : `${daysDiff} days ago`;
+            // if (yearDiff < 1) {
+            //     relativeTime = `${monthDiff} months ago`;
+            // }
+            // if (monthDiff < 1) {
+            //     relativeTime = `${weekDiff} weeks ago`;
+            // }
+            // if (weekDiff < 1) {
+            //     relativeTime = `${daysDiff} days ago`;
+            // }
+            // if (daysDiff < 1) {
+            //    relativeTime = `${hoursDiff} hours ago`;
+            // }
+            // if (hoursDiff < 1) {
+            //     relativeTime = `${minutesDiff} minutes ago`;
+            // }
+            // if (minutesDiff < 1) {
+            //     relativeTime = `${secondDiff} seconds ago`;
+            // }
+            //  return relativeTime;
+        // }
+
+        // Example usage
+        // const relativeTime = formatDateRelativeToNow(date.textContent);
+        // date.textContent = relativeTime.toString();
+    // })
+</script>
 
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

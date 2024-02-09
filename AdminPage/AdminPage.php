@@ -3,6 +3,17 @@ include('../Classes/Connect.php');
 include('../Classes/Product.php');
 $Con=new Connect;
 $db=$Con->getConnection();
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if(isset($_POST["approve"])){
+        $sql= "UPDATE sellerverification SET SellerVerificationStatus=1 WHERE SellerUserName = '".$_POST['value']."'";
+        $res=$db->query($sql);
+    }
+    if(isset($_POST["deny"])){
+        $sql= "UPDATE sellerverification SET SellerVerificationFailed=1 WHERE SellerUserName = '".$_POST['value']."'";
+        $res=$db->query($sql);
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +30,12 @@ $db=$Con->getConnection();
     <title>BUNO</title>
 </head>
 <body>
-    <header></header>
+    <header>
+        <nav class="header__nav">
+            <a class="header__logo" href="">BUNO</a>
+            <h4>Welcome Back!</h4>
+        </nav>
+    </header>
     <div class="wrapper">
         <div class="title">
             <h2>User Requests</h2>
@@ -31,20 +47,22 @@ $db=$Con->getConnection();
             $res = $db->query($sql);
             if($res->num_rows > 0){
                 while($row = $res->fetch_assoc()){
-                    if($row["SellerDocumentVerificationStatus"] == false && $row['SellerVerificationFailed'] == false){
+                    if($row["SellerVerificationStatus"] == false && $row['SellerVerificationFailed'] == false){
                     ?>
                     <div class="user-request">
-                    <img src='<?php echo "../VerificationPage/".$row["SellerUserName"]."/".$row["SellerDocumentImage"];?>' alt="" width="100px"/>
+                    <img src='../VerificationPage/<?php echo $row["SellerDocumentImage"];?>' alt="" width="100px"/>
                     <span class="username"><?php echo $row["SellerUserName"];?></span>
-                    <button class="btn-view-document">view document</button>
+                    <button class="btn-view-document" name="viewDocument"><a href="../AdminPage/DocumentViewer.php?imageFileName=../VerificationPage/<?php echo $row['SellerDocuments'];?>">view document</a></button>
                     <div class="buttons">
-                        <button class="btn-approve">approve</button>
-                        <button class="btn-deny">deny</button>
+                        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post">
+                            <input type="hidden" name="value" value="<?php echo $row['SellerUserName']; ?>">
+                            <button class="btn-approve" name="approve">approve</button>
+                            <button class="btn-deny" name="deny">deny</button>
+                        </form>
                     </div>
                 </div>
-                <?php
-                }
-            }}?>
+                <?php 
+                }}}?>
             </div>
         </div>
     </div>

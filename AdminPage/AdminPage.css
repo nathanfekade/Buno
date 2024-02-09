@@ -4,6 +4,34 @@
   box-sizing: border-box;
 }
 
+header{
+  margin-bottom: 5%;
+}
+.header__nav{
+  display:flex;
+  justify-content: space-between;
+  border: 1px solid transparent;
+  background-color:black;
+  /* height: fit-content; */
+}
+.header__logo{
+  flex:1;
+  font-size:30px;
+  font-family: 'Montserat', sans-serif;
+  padding:15px;
+  color: #fff;
+  /* font-weight: bold; */
+  text-decoration: none;
+}
+.header__nav h4{
+  padding:15px;
+  font-family: 'Exo 2', sans-serif;
+  font-size:21px;
+  color: #fff;
+  font-weight: 200; 
+  opacity: 0.9;
+}
+
 body {
   font-family: "Exo 2", sans-serif;
   opacity: 1;

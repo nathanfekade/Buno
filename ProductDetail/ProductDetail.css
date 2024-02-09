@@ -151,10 +151,11 @@ body {
   border-radius: 10px;
   box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.5);
   padding: 20px;
-  display: grid;
-  gap: 12px;
 }
-
+.description {
+  text-wrap: wrap;
+  word-wrap: break-word;
+}
 .wrapper .productReview {
   display: flex;
   flex-direction: column;
@@ -247,31 +248,37 @@ transition: 1s;
 }
 
 .wrapper .commentSection {
-  border: solid red 1px;
   margin: 10px;
   padding: 10px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+
 }
 
 .commentSection .productComment {
-  border: solid red 1px;
   margin: 15px;
   border-radius: 10px;
+  color:black;
+  background-color: whitesmoke;
 }
 
 .productComment .commentInfo {
   display: flex;
   align-items: center;
   border-radius: 10px;
-  border-bottom-left-radius: 0px;
-  border-bottom-right-radius: 0px;
-  gap: 30px;
+  /* gap: 30px; */
   padding: 4px;
-  background-color: lightgray;
+  /* flex-direction: column; */
+  /* background-color: lightgray; */
+  /* background-color: rgb(227, 227, 227); */
+border-bottom: 6px solid white;
 }
 
-.commentInfo .reviewedBy {
-  display: flex;
-  padding: 1px;
+.commentInfo span{
+  font-size: 40px;
+}
+.commentInfo p {
+  font-size: 20px;
+  margin-left: 10px;
 }
 
 .commentInfo .date {
@@ -280,8 +287,8 @@ transition: 1s;
 }
 
 .productComment .comment {
-  margin: 2px;
-  margin-left: 40px;
+  /* margin: 2px; */
+  transform: translateX(100px);
   padding: 4px;
   font-size: 18px;
 }
