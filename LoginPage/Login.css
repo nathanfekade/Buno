@@ -16,21 +16,32 @@
    display:flex;
    justify-content: space-between;
    border: 1px solid transparent;
-   background-color:#1f4197;
-   /*#e1e8ed*/
+   background-color:black;
+   /* height: fit-content; */
  }
+ .buno_logo{
+  flex: 1;
+  display: flex;
+  margin-left: 2rem;
+}
+.buno_logo img{
+  object-fit: contain;
+  object-position: center;
+  height: 48px;
+  width:48px;
+ 
+}
  .header__logo{
-   flex:1;
-   font-size:24px;
-   font-family: 'Exo 2', sans-serif;
-   padding:20px;
+   font-size:30px;
+   font-family: 'Montserat', sans-serif;
    color: #fff;
-   font-weight: bold;
+   text-decoration: none;
  }
  .header__nav h4{
-   padding:20px;
+   padding-top:10px;
+   padding-right: 15px;
    font-family: 'Exo 2', sans-serif;
-   font-size:18px;
+   font-size:21px;
    color: #fff;
    font-weight: 200; 
    opacity: 0.9;
@@ -89,28 +100,29 @@ form{
  padding: 20px;
  border-radius: 40px;
  border: transparent;
- background-color:#1f4197;
+ background-color:black;
  color: #fff;
  font-family: 'Exo 2',sans-serif;
  font-size: 16px;
  text-align: center;
  font-weight: 600;
  margin: 10px 0;
+ cursor: pointer;
 }
-.signin-btn{
- border: 1px solid #2452c7;
+.signup-btn{
+ border: 1px solid black;
  text-align: center;
  padding: 20px;
  border-radius: 40px;
  margin-top: 10px;
  margin-bottom: 20px;
  text-decoration: none;
- color: #1f4197;
+ color: black;
  font-family: 'Exo 2',sans-serif;
  font-size: 16px;
 }
-.signin-btn:hover{
- background-color: #1f4197;
+.signup-btn:hover{
+ background-color: black;
  color: #fff;
  font-weight: 600;
 }
@@ -135,3 +147,44 @@ form{
  font-family: sans-serif;
 }
 
+
+@media screen and (max-width:480px){
+    
+    body{
+      min-height: fit-content;
+    }
+    header{
+      margin-bottom: 15%;
+    }
+    .buno_logo{
+      margin-left: .6rem;
+    }
+    .buno_logo img{
+      height: 40px;
+      width: 40px;
+
+    }
+    .header__logo{
+      font-size: 1.7rem;
+    }
+    .header__nav h4{
+      font-size: 18px;
+      padding-bottom: 10px;
+    }
+    .login-form{
+      width: 90vw;
+    }
+    .input-box{
+      margin: 15px 0;
+    }
+    .input-box input{
+      padding: 12px 20px;
+    }
+    .login-btn{
+      padding: 14px 20px;
+    }
+    .signup-btn{
+      padding: 14px 20px;
+    }
+
+}

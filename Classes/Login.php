@@ -47,8 +47,25 @@ class Login{
      // echo $row['SellerUserName'];
     // echo $row['SellerUserName'];
      //echo $row['SellerEmail'];
+   
       if($UserNameOrEmail==$row['SellerUserName']||$UserNameOrEmail==$row['SellerEmail']){
 
+        $admin='admin';
+        if($admin===$row['SellerUserName']||$admin===$row['SellerEmail']){
+        
+         if($Password==$row['SellerPassword']){
+           $_SESSION["SellerUserName"] = $row['SellerUserName'];
+   
+           echo " username match";
+           //temporarily to chat page
+           // header('Location: ../chat/SellerChat.php');
+           // exit;
+           // redirect to home page
+           header('Location: ../AdminPage/AdminPage.php');
+           exit;
+         }
+   
+        }
         if($Password==$row['SellerPassword']){
           $_SESSION["SellerUserName"] = $row['SellerUserName'];
 
